@@ -1,3 +1,8 @@
+<?php
+    $json = file_get_contents("http://meta-service");
+    $obj = json_decode($json);
+?>
+
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -8,17 +13,10 @@
     </head>
     <body>
 
-        <h1>Coolsies</h1>
+        <h1> <?php echo $obj->header; ?> </h1>
 
         <ul>
-            <?php
-                $json = file_get_contents("http://login-service");
-                $obj = json_decode($json);
-
-                foreach($obj->usernames as $item) {
-                    echo "<li>$item</li>";
-                }
-            ?>
+            
         </ul>
     </body>
 </html>
