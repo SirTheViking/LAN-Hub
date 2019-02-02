@@ -163,3 +163,21 @@ main .avatar:hover .thumb {
     border: 2px solid rgba(255, 255, 255, 0.507);
     transform: scale(1.1);
 }
+
+
+footer button {
+    margin-top: 50px;
+
+    width: 200px;
+    height: 50px;
+
+    border: none;
+    border: 2px solid var(--title-color);
+    border-radius: 5px;
+
+    background: none;
+
+    font-family: Poppins;
+    font-size: 17px;
+    color: var(--title-color);
+}
