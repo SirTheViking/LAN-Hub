@@ -1,6 +1,8 @@
 <?php
     $json = file_get_contents("http://meta-service");
     $obj = json_decode($json);
+
+    $title = $obj->header;
 ?>
 
 <html lang="en">
@@ -15,7 +17,13 @@
     </head>
     <body>
 
-        <header> <?php echo $obj->header; ?> </header>
+        <header> 
+            <div> <?php echo $title; ?> </div>
+            <!-- if you want a glitch effect title use these + the css
+                <div class="pink"> <?php echo $title; ?> </div>
+                <div class="blue"> <?php echo $title; ?> </div>
+            -->
+        </header>
         
         <form action="/login.php" method="post">
             <input type="text" placeholder="Username">

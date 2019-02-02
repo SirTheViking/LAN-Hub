@@ -42,6 +42,8 @@ body {
 
 
 header {
+    position: relative;
+
     font-family: Poppins Bold;
     font-size: 60px;
 
@@ -54,10 +56,32 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    transition: all .5s;
-    cursor: pointer;
 }
+
+header div {
+    position: absolute;
+}
+
+/*header > div {
+    z-index: 50;
+}
+
+header .pink {
+    color: #f0f;
+    margin: 5px 5px 0 0;
+    z-index: 1;
+
+    opacity: .5;
+}
+
+header .blue {
+    color: #0ff;
+    margin: 0 0 5px 5px;
+    z-index: 0;
+
+    opacity: .5;
+}*/
+
 
 
 form {
