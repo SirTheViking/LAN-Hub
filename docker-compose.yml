@@ -9,14 +9,6 @@ services:
       - 53122:80
 
 
-  login-service:
-    build: ./login_service
-    volumes:
-      - ./login_service:/usr/src/app
-    ports:
-      - 5001:80
-
-
 
   website:
     image: php:7.3-apache
@@ -25,7 +17,6 @@ services:
     ports:
       - 5000:80
     depends_on:
-      - login-service
       - meta-service
 
 
