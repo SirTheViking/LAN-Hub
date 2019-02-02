@@ -19,10 +19,6 @@
 
         <header> 
             <div> <?php echo $title; ?> </div>
-            <!-- if you want a glitch effect title use these + the css
-                <div class="pink"> <?php echo $title; ?> </div>
-                <div class="blue"> <?php echo $title; ?> </div>
-            -->
         </header>
         
         <form action="/login.php" method="post">
