@@ -10,13 +10,15 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         
         <title>Welcome</title>
+
+        <link type="text/css" rel="stylesheet" href="styles/login.css">
+        
+        <!-- Poppins font from google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet"> 
     </head>
     <body>
 
-        <h1> <?php echo $obj->header; ?> </h1>
+        <header> <?php echo $obj->header; ?> </header>
 
-        <ul>
-            
-        </ul>
     </body>
 </html>

@@ -22,7 +22,17 @@ class User(Resource):
 
         return {
             "header": address
-        }
+        }, 200
+
+    # Delete these, just for testing
+    def post(self):
+        return "IT WORKS", 200
+
+    def put(self):
+        return "A PUT", 200
+
+    def delete(self):
+        return "A DELETE", 200
 
 
 api.add_resource(User, "/")
