@@ -89,8 +89,8 @@
         <div class="modal">
             <form method="post" action="#">
                 <header>Create new User</header>
-                <input type="text" placeholder="Username">
-                <input type="password" placeholder="Password">
+                <input id="username" type="text" placeholder="Username">
+                <input id="password" type="password" placeholder="Password">
                 <button type="submit">Confirm</button>
             </form>
 

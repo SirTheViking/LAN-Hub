@@ -286,3 +286,8 @@ main .thumb .overlay .username {
 .modal form header {
     font-size: 26px;
 }
+
+
+.required {
+    border: 1px solid #ff0932 !important;
+}
