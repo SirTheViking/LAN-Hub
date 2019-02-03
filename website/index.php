@@ -14,6 +14,7 @@
         <title>Welcome</title>
 
         <link type="text/css" rel="stylesheet" href="styles/front.css">
+        <script src="scripts/jquery.js"></script>
     </head>
     <body>
 
@@ -85,5 +86,19 @@
             
         </main>
 
+        <div class="modal">
+            <form method="post" action="#">
+                <header>Create new User</header>
+                <input type="text" placeholder="Username">
+                <input type="password" placeholder="Password">
+                <button type="submit">Confirm</button>
+            </form>
+
+            <div class="cancel">Cancel</div>
+        </div>
+
+
+
+        <script src="scripts/main.js"></script>
     </body>
 </html>
