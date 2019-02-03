@@ -18,10 +18,14 @@
     src: url("../fonts/Poppins-Bold.ttf");
 }
 
+
+
+
 :root {
-    --body-background: #333641;
-    --title-color: #d4d9ea;
-    --border-color: #d4d9ea8f;
+    --body-background: #191f23;
+    --title-color: #d0deeb;
+    --border-color: rgba(78, 161, 255, 0.623);
+    --subtitle-color: rgba(255, 255, 255, 0.507);
 }
 
 body, html {
@@ -49,7 +53,7 @@ header {
 
     color: var(--title-color);
 
-    width: 400px;
+    width: 90%;
     padding: 40px 0;
     border-radius: 6px;
 
@@ -67,7 +71,7 @@ header div {
 
 
 main {
-    width: 700px;
+    width: 90%;
     height: auto;
     min-height: 10px;
 
@@ -105,7 +109,6 @@ main .avatar .thumb {
     border-radius: 3px;
 
     margin: 10px;
-    transition: all .5s;
 
     display: flex;
     justify-content: center;
@@ -143,7 +146,9 @@ main .thumb .overlay {
 main .thumb .overlay .status {
     font-family: Poppins;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.507);
+    color: var(--subtitle-color);
+
+    transition: all .5s;
 }
 
 
@@ -154,30 +159,44 @@ main .thumb .overlay .username {
 }
 
 
-main .avatar:hover .thumb {
-    transform: scale(1.1);
-}
-
-
 .current {
-    border: 2px solid rgba(255, 255, 255, 0.507);
+    border: 2px solid var(--border-color);
     transform: scale(1.1);
+
+    /* rgba(255, 255, 255, 0.507) */
+}
+
+.current .status {
+    color: var(--border-color) !important;
 }
 
 
-footer button {
-    margin-top: 50px;
+.create_new {
+    opacity: 0.6;
+    transition: all .5s;
+}
 
-    width: 200px;
-    height: 50px;
+.create_new .thumb {
+    border: 2px solid rgba(255, 255, 255, 0.307);
+    color: var(--subtitle-color);
 
-    border: none;
-    border: 2px solid var(--title-color);
-    border-radius: 5px;
+}
 
-    background: none;
+.create_new svg path {
+    fill: var(--subtitle-color);
+    transition: all .5s;
+}
 
-    font-family: Poppins;
-    font-size: 17px;
-    color: var(--title-color);
+.create_new svg {
+    width: 35px;
+    height: 35px;
+}
+
+.create_new:hover .thumb,
+.create_new:hover .thumb path,
+.create_new:hover .thumb .status {
+    fill: var(--title-color) !important;
+    color: var(--title-color) !important;
+    border-color: var(--title-color) !important;
+    opacity: 1;
 }
