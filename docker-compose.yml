@@ -1,6 +1,28 @@
 version: "3"
 
 services:
+  db:
+    image: mysql:5.7
+    ports:
+      - 32000:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d:ro
+
+
+
+  user-service:
+    build: ./user_service
+    volumes: 
+      - ./user_service:/usr/src/app
+    ports: 
+      - 6000:80
+    links:
+      - db
+
+
+
   meta-service:
     build: ./metadata_service
     volumes: 
