@@ -11,9 +11,6 @@ import mysql.connector
 app = Flask(__name__)
 api = Api(app)
 
-
-
-
 config = {
     "user": "root",
     "password": "root",
@@ -23,11 +20,11 @@ config = {
 }
 
 connection = mysql.connector.connect(**config)
-cursor = connection.cursor()
+cursor = connection.cursor(dictionary=True)
 
 
 
-add_user = "INSERT INTO users (username, password) VALUES (%s %s);"
+add_user = "INSERT INTO users (username, password) VALUES (%s, %s);"
 
 
 
@@ -40,9 +37,14 @@ class User(Resource):
 
     # Get users
     def get(self):
-        return {
-            "message": "This would happen if the form is empty"
-        }, 400
+        query = "SELECT * FROM users;"
+        cursor.execute(query)
+
+        data = cursor.fetchall()
+
+        
+
+        return jsonify(data)
 
     
     # Create user
