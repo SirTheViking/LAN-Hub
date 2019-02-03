@@ -14,7 +14,7 @@ app = Flask(__name__)
 api = Api(app)
 
 
-class User(Resource):
+class Meta(Resource):
 
     def get(self):
         # popen returns ip + a newline .strip will remove that
@@ -24,18 +24,9 @@ class User(Resource):
             "header": address
         }, 200
 
-    # Delete these, just for testing
-    def post(self):
-        return "IT WORKS", 200
-
-    def put(self):
-        return "A PUT", 200
-
-    def delete(self):
-        return "A DELETE", 200
 
 
-api.add_resource(User, "/")
+api.add_resource(Meta, "/")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80, debug=True)
