@@ -20,6 +20,8 @@ services:
       - 6000:80
     links:
       - db
+    depends_on:
+      - db
 
 
 
@@ -40,6 +42,7 @@ services:
       - 5000:80
     depends_on:
       - meta-service
+      - user-service
 
 
   
