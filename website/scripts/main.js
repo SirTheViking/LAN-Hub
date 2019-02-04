@@ -26,9 +26,13 @@ $(".register form").on("submit", function(e) {
     let uname = $(".register form #username").val();
     let passwd = $(".register form #password").val();
 
+    // Get the http://localhost:port/ link in case the port ever changes
+    let url_split = window.location.href.split("/")
+    let host_domain = url_split[0] + "//" + url_split[2];
+
     // So there are no empty sends
     if(uname.length > 0 && passwd.length > 0) {
-        $.post("http://localhost:1337/register", {username: uname, password: passwd})
+        $.post("http://localhost:1337/register", {username: uname, password: passwd, domain: host_domain})
             .done(function() { // Reload the page when it's done so the user list is updated
                 // TODO: Maybe login directly instead?!
                 location.reload();
