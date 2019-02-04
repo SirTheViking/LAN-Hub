@@ -28,6 +28,7 @@ services:
     build: ./user_service
     volumes: 
       - ./user_service:/usr/src/app
+      - ./data:/usr/src/app/data
     ports: 
       - 1337:80
     links:
@@ -50,11 +51,9 @@ services:
     image: php:7.3-apache
     volumes:
       - ./website:/var/www/html
+      - ./data:/var/www/html/data
     ports:
       - 5000:80
     depends_on:
       - meta-service
-      - user-service
-
-
-  
+      - user-service  
