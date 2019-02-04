@@ -5,7 +5,7 @@ from flask import Flask, jsonify, request
 from flask_restful import Resource, Api, reqparse
 from flask_cors import CORS
 
-import os
+import os, random
 import mysql.connector
 
 
@@ -29,7 +29,7 @@ cursor = connection.cursor(dictionary=True)
 
 
 # The registration query
-add_user = "INSERT INTO users (username, password) VALUES (%s, %s);"
+add_user = "INSERT INTO users (username, password, profile_image) VALUES (%s, %s, %s);"
 
 
 # Parse request arguments 
@@ -76,17 +76,20 @@ class Register(Resource):
     def post(self):
         args = parser.parse_args()
 
-        user_data = (args["username"], args["password"])
+        username = args["username"]
+        password = args["password"]
 
         # In case the checking javascript was deleted client side
         # and the form is submitted empty
-        if len(args["username"]) == 0 and len(args["password"]) == 0:
+        if len(username) == 0 and len(password) == 0:
             return {
                 "message": "Expected something funny? This isn't it."
             }, 400
         else:
+            image_file = random.choice(os.listdir("data/images"))
+            profile_image = f"localhost:5000/data/images/{image_file}"
             
-            cursor.execute(add_user, user_data)
+            cursor.execute(add_user, (username, password, profile_image))
             connection.commit()
 
             return {
