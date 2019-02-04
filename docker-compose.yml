@@ -12,13 +12,24 @@ services:
       - ./db:/docker-entrypoint-initdb.d
 
 
+  login-service:
+    build: ./login_service
+    volumes:
+      - ./login_service:/usr/src/app
+    ports: 
+      - 8900:80
+    links:
+      - db
+    depends_on:
+      - db
+
 
   user-service:
     build: ./user_service
     volumes: 
       - ./user_service:/usr/src/app
     ports: 
-      - 6000:80
+      - 1337:80
     links:
       - db
     depends_on:
