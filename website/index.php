@@ -105,9 +105,9 @@
             </div>
 
 
-            <footer>
-            Please pick a user <span class="cursor"></span>
-            </footer>
+            <!--<footer>
+                Please pick a user <span class="cursor"></span>
+            </footer>-->
         </div>
 
         <script src="scripts/main.js"></script>
