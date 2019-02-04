@@ -37,6 +37,7 @@ add_user = "INSERT INTO users (username, password, profile_image) VALUES (%s, %s
 parser = reqparse.RequestParser()
 parser.add_argument("username", type=str)
 parser.add_argument("password", type=str)
+parser.add_argument("domain", type=str)
 
 
 
@@ -86,8 +87,10 @@ class Register(Resource):
                 "message": "Expected something funny? This isn't it."
             }, 400
         else:
+            domain = args["domain"]
+
             image_file = random.choice(os.listdir("data/images"))
-            profile_image = f"localhost:5000/data/images/{image_file}"
+            profile_image = f"{domain}/data/images/{image_file}"
             
             cursor.execute(add_user, (username, password, profile_image))
             connection.commit()
