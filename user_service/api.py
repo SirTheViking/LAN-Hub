@@ -30,7 +30,7 @@ cursor = connection.cursor(dictionary=True)
 
 
 # The registration query
-add_user = "INSERT INTO users (username, password, profile_image) VALUES (%s, %s, %s);"
+add_user = "INSERT INTO users (username, password, salt, profile_image) VALUES (%s, %s, %s, %s);"
 
 
 # Parse request arguments 
@@ -93,7 +93,10 @@ class Register(Resource):
             image_file = random.choice(os.listdir("data/images"))
             profile_image = f"{domain}/data/images/{image_file}"
             
-            cursor.execute(add_user, (username, password, profile_image))
+            salt = uuid.uuid4().hex
+            hashed_password = hashlib.sha512((password + salt).encode("utf-8")).hexdigest()
+            
+            cursor.execute(add_user, (username, hashed_password, salt, profile_image))
             connection.commit()
 
             return {
