@@ -31,6 +31,8 @@ cursor = connection.cursor(dictionary=True)
 
 # The registration query
 add_user = "INSERT INTO users (username, password, salt, profile_image) VALUES (%s, %s, %s, %s);"
+# The login query
+get_user = "SELECT * FROM users WHERE username = %s"
 
 
 # Parse request arguments 
@@ -106,6 +108,33 @@ class Register(Resource):
 
 
 
+# /login - endpoint for logging users in
+class Login(Resource):
+
+    def post(self):
+        args = parser.parse_args()
+
+        username = args["username"]
+        password = args["password"]
+
+        if len(username) == 0 and len(password) == 0:
+            return {
+                "message": "Expected something funny? This isn't it."
+            }, 400
+        else:
+            cursor.execute(get_user, (username,))
+            data = cursor.fetchone()
+
+            hashed_local = hashlib.sha512((password + data["salt"]).encode("utf-8")).hexdigest()
+            
+            # Work in progress
+            if hashed_local == data["password"]:
+                return "IT WORKED"
+            else:
+                return "IT DIDNT"
+
+
+
 
 
 # /deleteall - Development endpoint for clearing 
@@ -124,15 +153,6 @@ class Delete(Resource):
 
 
 
-
-
-
-class Login(Resource):
-
-    def post(self):
-        return {
-            "message": "Logged in"
-        }, 200
 
 
 
