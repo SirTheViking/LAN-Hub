@@ -126,7 +126,19 @@ class Delete(Resource):
 
 
 
+
+class Login(Resource):
+
+    def post(self):
+        return {
+            "message": "Logged in"
+        }, 200
+
+
+
+
 api.add_resource(User, "/")
+api.add_resource(Login, "/login")
 api.add_resource(Register, "/register")
 api.add_resource(Delete, "/deleteall") # Remove later
 
