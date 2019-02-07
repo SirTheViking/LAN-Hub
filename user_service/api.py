@@ -129,7 +129,7 @@ class Login(Resource):
             
             # Work in progress
             if hashed_local == data["password"]:
-                return "IT WORKED"
+                return "IT WORKED", 202
             else:
                 return "IT DIDNT"
 
@@ -157,7 +157,7 @@ class Delete(Resource):
 
 
 
-api.add_resource(User, "/")
+api.add_resource(User, "/all")
 api.add_resource(Login, "/login")
 api.add_resource(Register, "/register")
 api.add_resource(Delete, "/deleteall") # Remove later
