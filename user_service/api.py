@@ -1,4 +1,4 @@
-# Login/Register service for info about the server and misc
+# Login/Register service
 
 
 from flask import Flask, jsonify, request

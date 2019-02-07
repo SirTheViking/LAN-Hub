@@ -51,38 +51,6 @@ $(".register form").on("submit", function(e) {
 
 
 
-/// Just goofing around
-let id = 1;
-let original = 0;
-$(".user").each(function() {
-    original++;
-});
-
-
-$(document).keyup(function(e) {
-    let key = e.which;
-
-    switch(key) {
-        case 39: // Right
-            if(id == original) {
-                break;
-            } else {
-                $("#" + id + " .thumb").removeClass("current");
-                id++;
-                $("#" + id + " .thumb").addClass("current");
-            }
-            break;
-        case 37: // Left
-            if(id == 1) {
-                break;
-            } else {
-                $("#" + id + " .thumb").removeClass("current");
-                id--;
-                $("#" + id + " .thumb").addClass("current");
-            }
-            break;
-    }
-});
 
 
 
@@ -90,20 +58,3 @@ $(document).keyup(function(e) {
 
 
 
-/// The blinker animation
-let state = true; // True visible, false invisible
-setInterval(function() {
-    let cursor = $("footer .cursor");
-
-    if(state == true) {
-        cursor.css({
-            "visibility": "hidden"
-        });
-    } else {
-        cursor.css({
-            "visibility": "visible"
-        });
-    }
-
-    state = !state;
-}, 600);
