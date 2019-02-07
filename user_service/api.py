@@ -131,7 +131,7 @@ class Login(Resource):
             if hashed_local == data["password"]:
                 return "IT WORKED", 202
             else:
-                return "IT DIDNT"
+                return "IT DIDNT", 401
 
 
 
