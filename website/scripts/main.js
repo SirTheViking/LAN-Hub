@@ -52,7 +52,27 @@ $(".register form").on("submit", function(e) {
 
 
 
+// Show the new user form
+$(".avatar").on("click", function() {
+    $(".login").css({
+        "display": "flex"
+    });
 
+    $(".login header").text("Password for " + $(this).find(".username").text());
+
+    // Just in case
+    $(".login form input").each(function(i) {
+        $(this).removeClass("required");
+        $(this).val("");
+    });
+});
+
+// Hide the login form
+$(".login .cancel").on("click", function() {
+    $(".login").css({
+        "display": "none"
+    });
+});
 
 
 
