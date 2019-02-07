@@ -2,7 +2,7 @@
 
 
 from flask import Flask, jsonify, request
-from flask_restful import Resource, Api, reqparse
+from flask_restful import Resource, Api
 from flask_cors import CORS
 
 import os, random
@@ -12,7 +12,7 @@ import mysql.connector
 
 app = Flask(__name__)
 api = Api(app)
-# To allow Cors requests everywhere
+# To allow Cors requests everywhere (maybe not a good idea)
 CORS(app)
 
 # Database data config
@@ -33,14 +33,6 @@ cursor = connection.cursor(dictionary=True)
 add_user = "INSERT INTO users (username, password, salt, profile_image) VALUES (%s, %s, %s, %s);"
 # The login query
 get_user = "SELECT * FROM users WHERE username = %s"
-
-
-# Parse request arguments 
-# TODO: Change this since it's going to be deprecated
-parser = reqparse.RequestParser()
-parser.add_argument("username", type=str)
-parser.add_argument("password", type=str)
-parser.add_argument("domain", type=str)
 
 
 
@@ -78,10 +70,9 @@ class Register(Resource):
     # Create user
     # TODO: Hash passwords
     def post(self):
-        args = parser.parse_args()
 
-        username = args["username"]
-        password = args["password"]
+        username = request.args.get("username")
+        password = request.args.get("password")
 
         # In case the checking javascript was deleted client side
         # and the form is submitted empty
@@ -90,7 +81,7 @@ class Register(Resource):
                 "message": "Expected something funny? This isn't it."
             }, 400
         else:
-            domain = args["domain"]
+            domain = request.args.get("domain")
 
             image_file = random.choice(os.listdir("data/images"))
             profile_image = f"{domain}/data/images/{image_file}"
@@ -112,10 +103,9 @@ class Register(Resource):
 class Login(Resource):
 
     def post(self):
-        args = parser.parse_args()
 
-        username = args["username"]
-        password = args["password"]
+        username = request.args.get("username")
+        password = request.args.get("password")
 
         if len(username) == 0 and len(password) == 0:
             return {
@@ -157,9 +147,10 @@ class Delete(Resource):
 
 
 
-api.add_resource(User, "/all")
+api.add_resource(User, "/all", "/delete/<string:username>")
 api.add_resource(Login, "/login")
 api.add_resource(Register, "/register")
+
 api.add_resource(Delete, "/deleteall") # Remove later
 
 
