@@ -96,7 +96,7 @@
 
             <div class="modal login">
                 <form method="post" action="#">
-                    <header>Password for user</header>
+                    <header>Password for&nbsp;<span class="login_username"></span></header>
                     <input id="login_password" type="password" placeholder="Password">
                     <button type="submit">Enter</button>
                 </form>
