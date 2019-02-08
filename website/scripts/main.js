@@ -26,16 +26,13 @@ $(".register form").on("submit", function(e) {
     let uname = $(".register form #username").val();
     let passwd = $(".register form #password").val();
 
-    // Get the http://localhost:port/ link in case the port ever changes
-    let url_split = window.location.href.split("/")
-    let host_domain = url_split[0] + "//" + url_split[2];
-
     // So there are no empty sends
     if(uname.length > 0 && passwd.length > 0) {
-        $.post("http://localhost:1337/register", {username: uname, password: passwd, domain: host_domain})
-            .done(function() { // Reload the page when it's done so the user list is updated
+        $.post("http://localhost:5000/user/register", {username: uname, password: passwd})
+            .done(function(data) { // Reload the page when it's done so the user list is updated
                 // TODO: Maybe login directly instead?!
-                location.reload();
+                //location.reload();
+                console.log(data);
             });
     
     } else {
@@ -52,13 +49,13 @@ $(".register form").on("submit", function(e) {
 
 
 
-// Show the new user form
-$(".avatar").on("click", function() {
+// Show the login
+$(".avatar.user").on("click", function() {
     $(".login").css({
         "display": "flex"
     });
 
-    $(".login header").text("Password for " + $(this).find(".username").text());
+    $(".login .login_username").text($(this).find(".username").text());
 
     // Just in case
     $(".login form input").each(function(i) {
@@ -72,6 +69,34 @@ $(".login .cancel").on("click", function() {
     $(".login").css({
         "display": "none"
     });
+});
+
+
+
+// User Creation form
+$(".login form").on("submit", function(e) {
+    e.preventDefault();
+
+    let passwd = $(".login form #login_password").val();
+    let uname = $(".login_username").text().trim();
+
+    console.log(uname);
+
+    // So there are no empty sends
+    if(passwd.length > 0) {
+        $.post("http://localhost:5000/user/login", {username: uname, password: passwd})
+            .done(function(data) { // Reload the page when it's done so the user list is updated
+                // TODO: Maybe login directly instead?!
+                //location.reload();
+                console.log(data);
+            });
+    
+    } else {
+        // Show that the fields are required
+        $(".login form input").each(function(i) {
+            $(this).addClass("required");
+        });
+    }
 });
 
 
