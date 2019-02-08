@@ -37,7 +37,7 @@ services:
 
 
   website:
-    image: php:7.3-apache
+    build: ./website
     volumes:
       - ./website:/var/www/html
       - ./data:/var/www/html/data
@@ -46,3 +46,6 @@ services:
     depends_on:
       - meta-service
       - user-service  
+      - db
+    links:
+      - db
