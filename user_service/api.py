@@ -29,8 +29,6 @@ connection = mysql.connector.connect(**config)
 cursor = connection.cursor(dictionary=True)
 
 
-# The registration query
-add_user = "INSERT INTO users (username, password, salt, profile_image) VALUES (%s, %s, %s, %s);"
 # The login query
 get_user = "SELECT * FROM users WHERE username = %s"
 
