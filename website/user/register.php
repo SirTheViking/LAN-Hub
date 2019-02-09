@@ -2,21 +2,32 @@
 
 require ("db.php");
 
-if(isset($_POST["username"]) && isset($_POST["password"])) {
-    $username = htmlspecialchars($_POST["username"]);
-    $password = htmlspecialchars($_POST["password"]);
-    $random_pic = random_pic(); // Random profile picture
-
-    $pass_hash = password_hash($password, PASSWORD_BCRYPT);
-
-    $stmt = $pdo->prepare("INSERT INTO users (username, password, profile_image) VALUES (:username, :password, :profile_image);");
-    $stmt->bindParam(":username", $username);
-    $stmt->bindParam(":password", $pass_hash);
-    $stmt->bindParam(":profile_image", $random_pic);
-    $stmt->execute();
-    
-    echo "Successfully Registered"; // Temporary
+// If the variables aren't set, no point in continuing
+if(!isset($_POST["username"]) || !isset($_POST["password"])) {
+    echo "That won't really work"; // TODO: Something more informative
 }
+
+
+
+
+
+$username = htmlspecialchars($_POST["username"]);
+$password = htmlspecialchars($_POST["password"]);
+$random_pic = random_pic(); // Random profile picture
+
+$pass_hash = password_hash($password, PASSWORD_BCRYPT);
+
+$stmt = $pdo->prepare("INSERT INTO users (username, password, profile_image) VALUES (:username, :password, :profile_image);");
+$stmt->bindParam(":username", $username);
+$stmt->bindParam(":password", $pass_hash);
+$stmt->bindParam(":profile_image", $random_pic);
+$stmt->execute();
+    
+echo "Successfully Registered"; // Temporary
+
+
+
+
 
 
 
