@@ -13,7 +13,7 @@ import mysql.connector
 app = Flask(__name__)
 api = Api(app)
 # To allow Cors requests everywhere (maybe not a good idea)
-CORS(app)
+#CORS(app)
 
 # Database data config
 config = {
@@ -24,13 +24,6 @@ config = {
     "database": "ip"
 }
 
-# Connect to database
-connection = mysql.connector.connect(**config)
-cursor = connection.cursor(dictionary=True)
-
-
-# The login query
-get_user = "SELECT * FROM users WHERE username = %s"
 
 
 
@@ -42,11 +35,17 @@ class User(Resource):
 
     # Get users
     def get(self):
+        # Connect to database
+        connection = mysql.connector.connect(**config)
+        cursor = connection.cursor(dictionary=True)
+
         query = "SELECT * FROM users;"
         cursor.execute(query)
 
         data = cursor.fetchall()
         
+        cursor.close()
+        connection.close();
         # Temporary (don't send passwords back)
         return jsonify(data)
 
