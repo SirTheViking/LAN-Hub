@@ -84,7 +84,7 @@ main .avatar .thumb {
     position: relative;
 
     width: 200px;
-    height: 200px;
+    height: 300px;
 
     overflow: hidden;
     border-radius: 3px;
@@ -152,15 +152,16 @@ main .thumb .overlay .username {
 }
 
 
+
 .create_new {
     opacity: 0.6;
     transition: all .5s;
 }
 
 .create_new .thumb {
-    border: 2px solid rgba(255, 255, 255, 0.307);
     color: var(--subtitle-color);
 
+    box-shadow: none !important;
 }
 
 .create_new svg path {
