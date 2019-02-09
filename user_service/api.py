@@ -24,9 +24,27 @@ config = {
     "database": "ip"
 }
 
+connection = mysql.connector.connect(**config)
+cursor = connection.cursor(dictionary=True)
 
 
+# Create a connection to the database
+def connect():
+    global connection 
+    global cursor 
 
+    if not connection.is_connected():
+        connection = mysql.connector.connect(**config)
+        cursor = connection.cursor(dictionary=True)
+
+# Kill a connection to the database
+def disconnect():
+    global connection
+    global cursor
+
+    if connection.is_connected():
+        connection.close()
+        cursor.close()
 
 
 # / - endpoint for getting all users
@@ -35,17 +53,14 @@ class User(Resource):
 
     # Get users
     def get(self):
-        # Connect to database
-        connection = mysql.connector.connect(**config)
-        cursor = connection.cursor(dictionary=True)
+        connect()
 
         query = "SELECT * FROM users;"
         cursor.execute(query)
 
         data = cursor.fetchall()
         
-        cursor.close()
-        connection.close();
+        disconnect()
         # Temporary (don't send passwords back)
         return jsonify(data)
 
@@ -69,17 +84,13 @@ class User(Resource):
 class Delete(Resource):
 
     def delete(self):
-        # Connect to database
-        connection = mysql.connector.connect(**config)
-        cursor = connection.cursor(dictionary=True)
+        connect()
 
         query = "TRUNCATE TABLE users"
         cursor.execute(query)
         connection.commit()
 
-
-        cursor.close()
-        connection.close();
+        disconnect()
         return {
             "message": "Users database cleared"
         }, 204
@@ -102,3 +113,4 @@ api.add_resource(Delete, "/deleteall") # Remove later
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80, debug=True)
+
