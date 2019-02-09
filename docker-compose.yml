@@ -12,6 +12,15 @@ services:
       - ./db:/docker-entrypoint-initdb.d
 
 
+  
+  meta-service:
+    build: ./metadata_service
+    volumes: 
+      - ./metadata_service:/usr/src/app
+    ports:
+      - 53122:80
+
+
 
   user-service:
     build: ./user_service
@@ -24,16 +33,7 @@ services:
       - db
     depends_on:
       - db
-
-
-  
-  meta-service:
-    build: ./metadata_service
-    volumes: 
-      - ./metadata_service:/usr/src/app
-    ports:
-      - 53122:80
-
+      
 
 
   website:
