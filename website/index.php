@@ -1,5 +1,6 @@
 <?php
-    
+    $json = file_get_contents("http://user-service/all");
+    $obj = json_decode($json);
 ?>
 
 <html lang="en">
@@ -17,51 +18,28 @@
         
         <div id="container">
             <main>
+                <?php 
 
-                <div id="1" class="avatar user">
-                    <div class="thumb current">
-                        <img src="https://wallhalla.com/thumbs/preview/e/EbnAPMvHLp.jpg">  
-                        
-                        <div class="overlay">
-                            <div class="username">
-                                Lirik
+                    foreach($obj as $user) {
+                        echo '
+                            <div id="' . $user->id . '" class="avatar user">
+                                <div class="thumb">
+                                    <img src="user/' . $user->profile_image . '">
+                                    
+                                    <div class="overlay">
+                                        <div class="username">
+                                            ' . $user->username . '
+                                        </div>
+                                        <div class="status">
+                                            Offline
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="status">
-                                Offline
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        ';
+                    }
 
-                <div id="2" class="avatar user">
-                    <div class="thumb">
-                        <img src="https://wallhalla.com/thumbs/preview/y/yWbQgkbI1N8.jpg">
-                        
-                        <div class="overlay">
-                            <div class="username">
-                                Waffle
-                            </div>
-                            <div class="status">
-                                Offline
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="3" class="avatar user">
-                    <div class="thumb">
-                        <img src="https://wallhalla.com/thumbs/preview/k/KEEoeYv8h5Xx.jpg">
-
-                        <div class="overlay">
-                            <div class="username">
-                                Shorty
-                            </div>
-                            <div class="status">
-                                Logged in
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                ?>
 
                 <div id="4" class="avatar create_new">
                     <div class="thumb">
