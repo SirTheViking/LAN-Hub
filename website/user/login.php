@@ -18,7 +18,10 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
     }
 
     if(password_verify($password, $data["password"])) {
-        echo "Access Granted";
+        $_SESSION["logged_in"] = $username;
+
+
+        echo $_SESSION["logged_in"] . " Logged in";
     } else {
         echo "Access Denied";
     }

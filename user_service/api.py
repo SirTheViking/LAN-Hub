@@ -64,66 +64,6 @@ class User(Resource):
 
 
 
-# /register - endpoint for registering users
-class Register(Resource):
-    
-    # Create user
-    # TODO: Hash passwords
-    def post(self):
-
-        username = request.args.get("username")
-        password = request.args.get("password")
-
-        # In case the checking javascript was deleted client side
-        # and the form is submitted empty
-        if len(username) == 0 and len(password) == 0:
-            return {
-                "message": "Expected something funny? This isn't it."
-            }, 400
-        else:
-            domain = request.args.get("domain")
-
-            image_file = random.choice(os.listdir("data/images"))
-            profile_image = f"{domain}/data/images/{image_file}"
-            
-            salt = uuid.uuid4().hex
-            hashed_password = hashlib.sha512((password + salt).encode("utf-8")).hexdigest()
-            
-            cursor.execute(add_user, (username, hashed_password, salt, profile_image))
-            connection.commit()
-
-            return {
-                "message": "Successfully Registered"
-            }, 201
-
-
-
-
-# /login - endpoint for logging users in
-class Login(Resource):
-
-    def post(self):
-
-        username = request.args.get("username")
-        password = request.args.get("password")
-
-        if len(username) == 0 and len(password) == 0:
-            return {
-                "message": "Expected something funny? This isn't it."
-            }, 400
-        else:
-            cursor.execute(get_user, (username,))
-            data = cursor.fetchone()
-
-            hashed_local = hashlib.sha512((password + data["salt"]).encode("utf-8")).hexdigest()
-            
-            # Work in progress
-            if hashed_local == data["password"]:
-                return "IT WORKED", 202
-            else:
-                return "IT DIDNT", 401
-
-
 
 
 
@@ -148,8 +88,6 @@ class Delete(Resource):
 
 
 api.add_resource(User, "/all", "/delete/<string:username>")
-api.add_resource(Login, "/login")
-api.add_resource(Register, "/register")
 
 api.add_resource(Delete, "/deleteall") # Remove later
 

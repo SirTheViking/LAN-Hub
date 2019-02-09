@@ -1,8 +1,5 @@
 <?php
-    $json = file_get_contents("http://meta-service");
-    $obj = json_decode($json);
-
-    $title = $obj->header;
+    
 ?>
 
 <html lang="en">
