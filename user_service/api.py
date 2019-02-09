@@ -69,10 +69,17 @@ class User(Resource):
 class Delete(Resource):
 
     def delete(self):
+        # Connect to database
+        connection = mysql.connector.connect(**config)
+        cursor = connection.cursor(dictionary=True)
+
         query = "TRUNCATE TABLE users"
         cursor.execute(query)
         connection.commit()
 
+
+        cursor.close()
+        connection.close();
         return {
             "message": "Users database cleared"
         }, 204
