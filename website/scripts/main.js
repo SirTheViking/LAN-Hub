@@ -4,6 +4,8 @@ $(".create_new").on("click", function() {
         "display": "flex"
     });
 
+    hideElement(".thumb");
+
     $(".register form input").each(function(i) {
         $(this).removeClass("required");
         $(this).val("");
@@ -12,6 +14,8 @@ $(".create_new").on("click", function() {
 
 // Hide the new user form
 $(".register .cancel").on("click", function() {
+    showElement(".thumb");
+
     $(".register").css({
         "display": "none"
     });
@@ -55,6 +59,8 @@ $(".avatar.user").on("click", function() {
         "display": "flex"
     });
 
+    hideElement(".thumb");
+
     $(".login .login_username").text($(this).find(".username").text());
 
     // Just in case
@@ -66,6 +72,8 @@ $(".avatar.user").on("click", function() {
 
 // Hide the login form
 $(".login .cancel").on("click", function() {
+    showElement(".thumb");
+    
     $(".login").css({
         "display": "none"
     });
@@ -79,8 +87,6 @@ $(".login form").on("submit", function(e) {
 
     let passwd = $(".login form #login_password").val();
     let uname = $(".login_username").text().trim();
-
-    console.log(uname);
 
     // So there are no empty sends
     if(passwd.length > 0) {
@@ -101,5 +107,24 @@ $(".login form").on("submit", function(e) {
 
 
 
+
+
+
+
+
+
+
+
+function showElement(element) {
+    $(element).css({
+        "opacity": "1"
+    });
+}
+
+function hideElement(element) {
+    $(element).css({
+        "opacity": "0"
+    });
+}
 
 
