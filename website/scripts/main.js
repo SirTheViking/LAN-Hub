@@ -51,13 +51,27 @@ $(".register form").on("submit", function(e) {
 
 
 
+
 // Show the login
 $(".avatar.user").on("click", function() {
+    hideElement(".thumb");
+
+    // Get the variables required to make the login form look nicer
+    let image = $(this).find(".thumb img").attr("src");
+    let username = $(this).find(".username").text().trim();
+    let status = "Logging in";
+    
+
+    $(".form_avatar .thumb_small img").attr("src", image);
+    $(".form_avatar .username").text(username);
+    $(".form_avatar .status").text(status);
+    
+
+
     $(".login").css({
         "display": "flex"
     });
 
-    hideElement(".thumb");
 
     $(".login .login_username").text($(this).find(".username").text());
 
@@ -68,6 +82,7 @@ $(".avatar.user").on("click", function() {
     });
 });
 
+
 // Hide the login form
 $(".login .cancel").on("click", function() {
     showElement(".thumb");
@@ -76,6 +91,7 @@ $(".login .cancel").on("click", function() {
         "display": "none"
     });
 });
+
 
 
 
