@@ -1,6 +1,9 @@
 :root {
-    --body-background: #232732;
+    --body-background: #181b21;
+    --body-background-transparent: rgba(24, 27, 33, 0.85);
     --title-color: #d0deeb;
     --border-color: rgba(78, 161, 255, 0.623);
     --subtitle-color: rgba(255, 255, 255, 0.507);
+
+    --transition: all .2s;
 }
