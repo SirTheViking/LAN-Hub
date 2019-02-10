@@ -75,8 +75,22 @@
             </div>
 
             <div class="modal login">
+                <div class="form_avatar">
+                    <div class="thumb_small">
+                        <img src="#">
+                        <div class="overlay">
+                            <div class="username">
+                                Magic
+                            </div>
+                            <div class="status">
+                                Create User
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <form method="post" action="#">
-                    <header>Password for&nbsp;<span class="login_username"></span></header>
+                    
                     <input id="login_password" type="password" placeholder="Password" autocomplete="off">
                     <button type="submit">Enter</button>
                 </form>
