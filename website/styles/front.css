@@ -108,7 +108,7 @@ main .avatar {
     z-index: 50;
 }
 
-main .avatar .thumb {
+main .avatar .thumb, .form_avatar .thumb_small {
     position: relative;
 
     width: 200px;
@@ -127,8 +127,6 @@ main .avatar .thumb {
     cursor: pointer;
 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-
-    border: 2px solid transparent;
 }
 
 main .avatar .thumb:hover {
@@ -137,13 +135,14 @@ main .avatar .thumb:hover {
 
 
 
-main .thumb img {
-    width: auto;
+main .thumb img, .form_avatar .thumb_small img {
+    min-width: auto;
     height: 100%;
+    min-height: 100%;
     z-index: 1;
 }
 
-main .thumb .overlay {
+main .thumb .overlay, .thumb_small .overlay {
     position: absolute;
 
     width: 100%;
@@ -160,7 +159,7 @@ main .thumb .overlay {
     z-index: 2;
 }
 
-main .thumb .overlay .status {
+main .thumb .overlay .status, .thumb_small .overlay .status {
     font-family: Poppins;
     font-size: 14px;
     color: var(--subtitle-color);
@@ -169,7 +168,7 @@ main .thumb .overlay .status {
 }
 
 
-main .thumb .overlay .username {
+main .thumb .overlay .username, .thumb_small .overlay .username {
     font-family: Poppins;
     font-size: 24px;
     color: var(--title-color);
@@ -300,6 +299,35 @@ main .thumb .overlay .username {
 }
 
 
+.form_avatar {
+    width: 200px;
+    height: 200px;
+
+    margin-bottom: 50px;
+}
+
+.form_avatar .thumb_small {
+    width: 100%;
+    height: 100%;
+
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    margin: 0;
+
+    z-index: 90;
+}
+
+.form_avatar .thumb_small img {
+    min-height: 100%;
+    height: auto;
+    width: 100%;
+}
+
+.form_avatar .overlay .status {
+    color: var(--border-color);
+}
+
+
 
 
 
@@ -321,7 +349,7 @@ main .thumb .overlay .username {
     }
 
     main .avatar .thumb:hover {
-        border: 2px solid transparent;
+        border: none
     }
 }
 
@@ -338,7 +366,7 @@ main .thumb .overlay .username {
     }
 
     main .avatar .thumb:hover {
-        border: 2px solid transparent;
+        border: none;
     }
 
 }
