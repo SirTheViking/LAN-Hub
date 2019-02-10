@@ -30,21 +30,19 @@ $(".register form").on("submit", function(e) {
     let uname = $(".register form #username").val();
     let passwd = $(".register form #password").val();
 
-    // So there are no empty sends
-    if(uname.length > 0 && passwd.length > 0) {
-        $.post("http://localhost:5000/user/register", {username: uname, password: passwd})
-            .done(function(data) { // Reload the page when it's done so the user list is updated
-                // TODO: Maybe login directly instead?!
-                //location.reload();
-                console.log(data);
-            });
-    
-    } else {
+    if(uname.length == 0 || passwd.length == 0) {
         // Show that the fields are required
         $(".register form input").each(function(i) {
             $(this).addClass("required");
         });
     }
+
+    $.post("http://localhost:5000/user/register", {username: uname, password: passwd})
+        .done(function(data) { // Reload the page when it's done so the user list is updated
+                // TODO: Maybe login directly instead?!
+                //location.reload();
+            console.log(data);
+        });
 });
 
 
@@ -88,21 +86,21 @@ $(".login form").on("submit", function(e) {
     let passwd = $(".login form #login_password").val();
     let uname = $(".login_username").text().trim();
 
-    // So there are no empty sends
-    if(passwd.length > 0) {
-        $.post("http://localhost:5000/user/login", {username: uname, password: passwd})
-            .done(function(data) { // Reload the page when it's done so the user list is updated
-                // TODO: Maybe login directly instead?!
-                //location.reload();
-                console.log(data);
-            });
-    
-    } else {
+    if(passwd.length == 0) {
         // Show that the fields are required
         $(".login form input").each(function(i) {
             $(this).addClass("required");
         });
+
+        return;
     }
+
+    $.post("http://localhost:5000/user/login", {username: uname, password: passwd})
+        .done(function(data) { // Reload the page when it's done so the user list is updated
+                // TODO: Maybe login directly instead?!
+                //location.reload();
+            console.log(data);
+        });
 });
 
 
