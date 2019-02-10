@@ -15,7 +15,9 @@
         <script src="scripts/jquery.js"></script>
     </head>
     <body>
-        
+
+        <div class="background"></div>
+
         <div id="container">
             <main>
                 <?php 
@@ -41,7 +43,7 @@
 
                 ?>
 
-                <div id="4" class="avatar create_new">
+                <div class="avatar create_new">
                     <div class="thumb">
                         
                         
@@ -58,11 +60,14 @@
 
             </main>
 
-            <div class="modal register">
+            
+        </div>
+
+        <div class="modal register">
                 <form method="post" action="#">
                     <header>Create new User</header>
-                    <input name="username" id="username" type="text" placeholder="Username">
-                    <input name="password" id="password" type="password" placeholder="Password">
+                    <input name="username" id="username" type="text" placeholder="Username" autocomplete="off">
+                    <input name="password" id="password" type="password" placeholder="Password" autocomplete="off">
                     <button type="submit">Confirm</button>
                 </form>
 
@@ -72,13 +77,12 @@
             <div class="modal login">
                 <form method="post" action="#">
                     <header>Password for&nbsp;<span class="login_username"></span></header>
-                    <input id="login_password" type="password" placeholder="Password">
+                    <input id="login_password" type="password" placeholder="Password" autocomplete="off">
                     <button type="submit">Enter</button>
                 </form>
 
                 <div class="cancel">Cancel</div>
             </div>
-        </div>
 
         <script src="scripts/main.js"></script>
     </body>
