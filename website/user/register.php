@@ -3,7 +3,7 @@
 require ("db.php");
 
 // If the variables aren't set, no point in continuing
-if(!isset($_POST["username"]) || !isset($_POST["password"])) {
+if(!empty($_POST["username"]) || !empty($_POST["password"])) {
     echo "That won't really work"; // TODO: Something more informative
 }
 

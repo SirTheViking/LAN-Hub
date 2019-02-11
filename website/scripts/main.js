@@ -35,6 +35,8 @@ $(".register form").on("submit", function(e) {
         $(".register form input").each(function(i) {
             $(this).addClass("required");
         });
+
+        return;
     }
 
     $.post("http://localhost:5000/user/register", {username: uname, password: passwd})
