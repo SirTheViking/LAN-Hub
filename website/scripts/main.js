@@ -4,7 +4,6 @@ $(".create_new").on("click", function() {
         "display": "flex"
     });
 
-    hideElement(".thumb");
 
     $(".register form input").each(function(i) {
         $(this).removeClass("required");
@@ -14,7 +13,6 @@ $(".create_new").on("click", function() {
 
 // Hide the new user form
 $(".register .cancel").on("click", function() {
-    showElement(".thumb");
 
     $(".register").css({
         "display": "none"
@@ -56,7 +54,6 @@ $(".register form").on("submit", function(e) {
 
 // Show the login
 $(".avatar.user").on("click", function() {
-    hideElement(".thumb");
 
     // Get the variables required to make the login form look nicer
     let image = $(this).find(".thumb img").attr("src");
@@ -87,8 +84,7 @@ $(".avatar.user").on("click", function() {
 
 // Hide the login form
 $(".login .cancel").on("click", function() {
-    showElement(".thumb");
-    
+
     $(".login").css({
         "display": "none"
     });

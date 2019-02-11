@@ -296,11 +296,15 @@ main .thumb .overlay .username, .thumb_small .overlay .username {
 }
 
 
+
+
+
+
 .form_avatar {
     width: 200px;
     height: 200px;
 
-    margin-bottom: 50px;
+    margin: 0 20px 50px 20px;
 }
 
 .form_avatar .thumb_small {
@@ -325,6 +329,33 @@ main .thumb .overlay .username, .thumb_small .overlay .username {
 .form_avatar .overlay .status {
     color: var(--border-color);
 }
+
+
+
+
+
+
+
+/* LOGIN BRANCH CHANGES */
+
+.login {
+    display: flex;
+}
+
+
+.avatar_container {
+    max-width: 1200px; /* TODO: Responsive*/
+    width: auto;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* LOGIN BRANCH CHANGES */
+
+
 
 
 
