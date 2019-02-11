@@ -155,14 +155,12 @@ var a_width = $(".current").first().outerWidth(true);
 // Just to make sure that spamming doesnt ruin it
 var margin = 0;
 
-var run = false;
 
 // If the amount of users is even, center one of them
 if($(".form_avatar").length % 2 == 0) {
     margin = a_width;
     $(".avatar_container").css("margin-right", margin);
 
-    run = true;
 }
 
 $(document).ready(function() {
@@ -170,11 +168,8 @@ $(document).ready(function() {
 
         let pos = $(this).offset();
 
-        console.log(pos);
-
         // Weird check for android chrome
         if(pos.left <= center + 100 && pos.left >= center - 100) {
-            console.log("HELLA YAH");
             $(".current").removeClass("current");
             $(this).addClass("current");
         }
