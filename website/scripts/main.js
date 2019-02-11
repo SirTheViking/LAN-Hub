@@ -149,6 +149,16 @@ function hideElement(element) {
 
 /* MOVE LATER THIS IS FOR TESTING */
 
+/**
+ * TODO ]============
+ * 
+ * 1. Don't go past the last avatar or before the first one
+ * 2. Login form variables should all be pulled when pressing 
+ *      and the form submitted
+ * 3. Register form should either go away and something new comes instead
+ *      or find a way to make it appear nicely
+ */
+
 var center = window.innerWidth / 2;
 // the total width of an avatar
 var a_width = $(".current").first().outerWidth(true);
