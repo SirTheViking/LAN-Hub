@@ -157,6 +157,7 @@ function hideElement(element) {
  *      and the form submitted
  * 3. Register form should either go away and something new comes instead
  *      or find a way to make it appear nicely
+ * 4. Add swipe gestures for touch devices
  */
 
 var center = window.innerWidth / 2;
