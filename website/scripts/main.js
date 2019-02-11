@@ -140,3 +140,74 @@ function hideElement(element) {
 }
 
 
+
+
+
+
+
+
+
+/* MOVE LATER THIS IS FOR TESTING */
+
+var center = window.innerWidth / 2;
+// the total width of an avatar
+var a_width = $(".current").first().outerWidth(true);
+// Just to make sure that spamming doesnt ruin it
+var margin = 0;
+
+var run = false;
+
+// If the amount of users is even, center one of them
+if($(".form_avatar").length % 2 == 0) {
+    margin = a_width;
+    $(".avatar_container").css("margin-right", margin);
+
+    run = true;
+}
+
+$(document).ready(function() {
+    $(".form_avatar").each(function(i) {
+
+        let pos = $(this).offset();
+
+        console.log(pos);
+
+        // Weird check for android chrome
+        if(pos.left <= center + 100 && pos.left >= center - 100) {
+            console.log("HELLA YAH");
+            $(".current").removeClass("current");
+            $(this).addClass("current");
+        }
+    });
+});
+
+
+
+$(document).on("keyup", function(e) {
+
+    let key = e.which;
+    let container = $(".avatar_container");
+    let current = $(".current");
+
+    switch(key) {
+        case 37: //Left
+            margin -= a_width * 2;
+
+            let prev = current.prev();
+
+            current.removeClass("current");
+            prev.addClass("current");
+            container.css("margin-right", margin);
+            break;
+        case 39: //Right
+            margin += a_width * 2;
+
+            // TODO: Add last and first checks
+            let next = current.next();
+
+            current.removeClass("current");
+            next.addClass("current");
+            container.css("margin-right", margin);
+            break;
+    }
+});

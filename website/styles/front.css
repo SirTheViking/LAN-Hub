@@ -16,6 +16,8 @@ body {
     flex-direction: column;
 
     background-color: var(--body-background);
+
+    overflow: hidden;
 }
 
 .background {
@@ -304,14 +306,15 @@ main .thumb .overlay .username, .thumb_small .overlay .username {
     width: 200px;
     height: 200px;
 
-    margin: 0 20px 50px 20px;
+    margin: 0 20px 80px 20px;
+
 }
 
 .form_avatar .thumb_small {
     width: 100%;
     height: 100%;
 
-    border: 2px solid var(--border-color);
+    /*border: 2px solid var(--border-color);*/
     border-radius: var(--border-radius-small);
     margin: 0;
 
@@ -326,12 +329,23 @@ main .thumb .overlay .username, .thumb_small .overlay .username {
     width: 100%;
 }
 
-.form_avatar .overlay .status {
-    color: var(--border-color);
+
+
+
+.current {
+    width: 200px;
+    height: 200px;
 }
 
+.current .thumb_small {
+    transform: scale(1.1);
 
+    box-shadow: var(--box-shadow-big);
+}
 
+.current .overlay .status {
+    color: var(--border-color);
+}
 
 
 
@@ -344,13 +358,14 @@ main .thumb .overlay .username, .thumb_small .overlay .username {
 
 
 .avatar_container {
-    max-width: 1200px; /* TODO: Responsive*/
-    width: auto;
+    width: auto; /* TODO: Calculate this in javascript*/
     height: auto;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition: all .5s;
 }
 
 /* LOGIN BRANCH CHANGES */
