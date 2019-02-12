@@ -1,3 +1,7 @@
+$(".modal").css({
+    "padding-top": window.innerHeight / 5
+});
+
 
 
 $("form").on("submit", function(e) {
