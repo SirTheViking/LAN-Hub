@@ -6,4 +6,9 @@
     --subtitle-color: rgba(255, 255, 255, 0.507);
 
     --transition: all .2s;
+
+    --border-radius: 5px;
+    --border-radius-small: 4px;
+
+    --box-shadow-big: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
