@@ -19,18 +19,6 @@
 
         <div class="background"></div>
 
-    
-
-        <div class="modal register">
-                <form method="post" action="#">
-                    <header>Create new User</header>
-                    <input name="username" id="username" type="text" placeholder="Username" autocomplete="off">
-                    <input name="password" id="password" type="password" placeholder="Password" autocomplete="off">
-                    <button type="submit">Confirm</button>
-                </form>
-
-                <div class="cancel">Cancel</div>
-            </div>
 
             <div class="modal login">
 
