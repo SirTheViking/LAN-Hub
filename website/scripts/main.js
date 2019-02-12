@@ -1,62 +1,27 @@
-// Show the new user form
-$(".create_new").on("click", function() {
-    $(".register").css({
-        "display": "flex"
-    });
 
 
-    $(".register form input").each(function(i) {
-        $(this).removeClass("required");
-        $(this).val("");
-    });
-});
-
-
-
-// User Creation form
-$(".register form").on("submit", function(e) {
+$("form").on("submit", function(e) {
     e.preventDefault();
 
-    let uname = $(".register form #username").val();
-    let passwd = $(".register form #password").val();
+    let passwd = $("#login_password").val();
+    let uname = $(".current .username").text().trim();;
+    let url = "http://localhost:5000/user/login";;
 
-    if(uname.length == 0 || passwd.length == 0) {
-        // Show that the fields are required
-        $(".register form input").each(function(i) {
-            $(this).addClass("required");
-        });
-
-        return;
+    if($(".create_new").hasClass("current")) {
+        uname = $("#register_username").val();
+        url = "http://localhost:5000/user/register";
     }
-
-    $.post("http://localhost:5000/user/register", {username: uname, password: passwd})
-        .done(function(data) { // Reload the page when it's done so the user list is updated
-                // TODO: Maybe login directly instead?!
-                //location.reload();
-            console.log(data);
-        });
-});
-
-
-
-
-// User Creation form
-$(".login form").on("submit", function(e) {
-    e.preventDefault();
-
-    let passwd = $(".login form #login_password").val();
-    let uname = $(".login_username").text().trim();
 
     if(passwd.length == 0) {
         // Show that the fields are required
-        $(".login form input").each(function(i) {
+        $("form input").each(function(i) {
             $(this).addClass("required");
         });
 
         return;
     }
 
-    $.post("http://localhost:5000/user/login", {username: uname, password: passwd})
+    $.post(url, {username: uname, password: passwd})
         .done(function(data) { // Reload the page when it's done so the user list is updated
                 // TODO: Maybe login directly instead?!
                 //location.reload();
@@ -78,12 +43,6 @@ $(".login form").on("submit", function(e) {
 
 /**
  * TODO ]============
- * 
- * 1. Don't go past the last avatar or before the first one
- * 2. Login form variables should all be pulled when pressing 
- *      and the form submitted
- * 3. Register form should either go away and something new comes instead
- *      or find a way to make it appear nicely
  * 4. Add swipe gestures for touch devices
  * 5. Clean this code and the CSS
  */
@@ -111,6 +70,13 @@ $(document).ready(function() {
         if(pos.left <= center + 100 && pos.left >= center - 100) {
             $(".current").removeClass("current");
             $(this).addClass("current");
+
+            if($(this).hasClass("create_new")) {
+                $("#register_username").css({
+                    "opacity": "1",
+                    "margin-top": "0"
+                });
+            }
         }
     });
 });
@@ -125,23 +91,48 @@ $(document).on("keyup", function(e) {
 
     switch(key) {
         case 37: //Left
-            margin -= a_width * 2;
-
             let prev = current.prev();
+
+            if(prev.length == 0) {
+                return;
+            }
+
+            margin -= a_width * 2;
 
             current.removeClass("current");
             prev.addClass("current");
             container.css("margin-right", margin);
             break;
         case 39: //Right
-            margin += a_width * 2;
-
             // TODO: Add last and first checks
             let next = current.next();
+
+            if(next.length == 0) {
+                return;
+            }
+
+            margin += a_width * 2;
 
             current.removeClass("current");
             next.addClass("current");
             container.css("margin-right", margin);
             break;
+    }
+
+    // This means the registration form should be visible
+    if($(".current").hasClass("create_new")) {
+        $("#register_username").css({
+            "opacity": "1",
+            "margin-top": "0",
+            "cursor": "text"
+        });
+    } else {
+        // Gotta hide it as best as possible
+        // while still having a smooth animation
+        $("#register_username").css({
+            "opacity": "0",
+            "margin-top": "-60px",
+            "cursor": "default"
+        });
     }
 });
