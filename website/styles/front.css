@@ -222,11 +222,11 @@ main .thumb .overlay .username, .thumb_small .overlay .username {
     z-index: 60;
 
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
 
-    display: none;
+    padding-top: 20%;
 }
 
 
@@ -255,6 +255,13 @@ main .thumb .overlay .username, .thumb_small .overlay .username {
     color: var(--subtitle-color);
 }
 
+#register_username {
+    opacity: 0;
+    margin-top: -60px;
+
+    transition: var(--transition);
+}
+
 .modal form button {
     width: 70%;
     border-radius: var(--border-radius-small);
@@ -278,14 +285,6 @@ main .thumb .overlay .username, .thumb_small .overlay .username {
 .modal form button:hover {
     background-color: var(--border-color);
     color: var(--title-color);
-}
-
-.modal .cancel {
-    font-family: Poppins;
-    font-size: 13px;
-    color: var(--subtitle-color);
-
-    cursor: pointer;
 }
 
 .modal form header {
@@ -338,7 +337,7 @@ main .thumb .overlay .username, .thumb_small .overlay .username {
 }
 
 .current .thumb_small {
-    transform: scale(1.1);
+    transform: scale(1.2);
 
     box-shadow: var(--box-shadow-big);
 }
@@ -351,11 +350,6 @@ main .thumb .overlay .username, .thumb_small .overlay .username {
 
 
 /* LOGIN BRANCH CHANGES */
-
-.login {
-    display: flex;
-}
-
 
 .avatar_container {
     width: auto; /* TODO: Calculate this in javascript*/
