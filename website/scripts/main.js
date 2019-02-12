@@ -40,22 +40,6 @@ $(".register form").on("submit", function(e) {
 
 
 
-
-
-
-
-
-// Hide the login form
-$(".login .cancel").on("click", function() {
-
-    $(".login").css({
-        "display": "none"
-    });
-});
-
-
-
-
 // User Creation form
 $(".login form").on("submit", function(e) {
     e.preventDefault();
