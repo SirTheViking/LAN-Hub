@@ -75,12 +75,15 @@
                 </div>
 
                 <form method="post" action="#">
-                    
+                    <!-- 
+                        | #register_username should only be visible when .current is on .create_new
+                        | Smooth transition on visibility and margin top when it shows up and 
+                        | when it disappears
+                     -->
+                    <input id="register_username" type="text" placeholder="Username" autocomplete="off">
                     <input id="login_password" type="password" placeholder="Password" autocomplete="off">
                     <button type="submit">Enter</button>
                 </form>
-
-                <div class="cancel">Cancel</div>
             </div>
 
         <script src="scripts/main.js"></script>
