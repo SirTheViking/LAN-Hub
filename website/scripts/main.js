@@ -129,11 +129,23 @@ $(document).on("keyup", function(e) {
     let key = e.which;
     carouselHandler(key);
 });
-// Same thing but for swipes
+// - Same thing but for swipes
 $(".modal").on("swipe", function(e, swipe) {
     let direction = swipe.direction;
     carouselHandler(direction);
 });
+// - Same thing but for clicks
+$(".form_avatar").on("click", function() {
+    let pos = $(this).offset();
+
+    if(pos.left < center) {
+        carouselHandler("left");
+    } else {
+        carouselHandler("right");
+    }
+});
+
+
 
 
 
