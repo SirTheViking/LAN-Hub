@@ -92,7 +92,7 @@ $("form").on("submit", function(e) {
 
 
 
- /* ####
+/* ####
 #######
 #######  Handling of how the "carousel" of users behaves
 #######
@@ -136,12 +136,32 @@ $(document).ready(function() {
 // to add or remove margin from the container
 // and to change what the .current tile is
 $(document).on("keyup", function(e) {
-
     let key = e.which;
+    carouselHandler(key);
+});
+// Same thing but for swipes
+$(".modal").on("swipe", function(e, swipe) {
+    let direction = swipe.direction;
+    carouselHandler(direction);
+});
+
+
+
+
+
+/* ####
+#######
+#######  Function definitions
+#######
+####*/
+
+// Handle the keyup and swipe events
+function carouselHandler(key) {
     let container = $(".avatar_container");
     let current = $(".current");
 
     switch(key) {
+        case "left":
         case 37: //Left
 
             let prev = current.prev();
@@ -158,6 +178,7 @@ $(document).on("keyup", function(e) {
             container.css("margin-right", margin);
             break;
 
+        case "right":
         case 39: //Right
 
             let next = current.next();
@@ -191,4 +212,4 @@ $(document).on("keyup", function(e) {
             "cursor": "default"
         });
     }
-});
+}
