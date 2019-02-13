@@ -30,7 +30,7 @@
                             echo '
                                 <div id="' . $user->id . '" class="form_avatar user">
                                     <div class="thumb_small">
-                                        <img src="user/' . $user->profile_image . '">
+                                        <img src="' . $user->profile_image . '">
                                         
                                         <div class="overlay">
                                             <div class="username">
@@ -74,6 +74,26 @@
                     <button type="submit">Enter</button>
                 </form>
             </div>
+
+
+        
+        <script type="text/javascript">
+            // For generating identicons early on
+            let options = {
+                foreground: [0, 0, 0, 255],
+                background: [255, 255, 255, 255],
+                margin: 0.2,
+                size: 420,
+                format: "svg"
+            };
+
+            $(".form_avatar img").each(function(i) {
+                let hash = $(this).attr("src");
+
+                let data = new Identicon(hash, options);
+                $(this).attr("src", "data:image/svg+xml;base64," + data);
+            });
+        </script>
 
         <script src="scripts/main.js"></script>
     </body>
