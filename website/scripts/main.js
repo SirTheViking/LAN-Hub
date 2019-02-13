@@ -132,6 +132,13 @@ $(document).on("keyup", function(e) {
 // - Same thing but for swipes
 $(".modal").on("swipe", function(e, swipe) {
     let direction = swipe.direction;
+    
+    if(direction == "left") {
+        direction = "right";
+    } else {
+        direction = "left";
+    }
+
     carouselHandler(direction);
 });
 // - Same thing but for clicks
