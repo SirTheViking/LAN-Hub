@@ -14,6 +14,7 @@
 
         <link type="text/css" rel="stylesheet" href="styles/front.css">
         <script src="scripts/jquery.js"></script>
+        <script src="scripts/jquery-mobile-events.js"></script>
         <script src="scripts/identicon.js"></script>
     </head>
     <body>
@@ -74,7 +75,7 @@
                     <button type="submit">Enter</button>
                 </form>
             </div>
-            
+
         <script src="scripts/main.js"></script>
     </body>
 </html>
