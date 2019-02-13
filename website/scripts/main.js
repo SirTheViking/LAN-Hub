@@ -82,16 +82,6 @@ $("form").on("submit", function(e) {
 
 
 
-/**
- * TODO ]============
- * 4. Add swipe gestures for touch devices
- * 5. Clean this code and the CSS
- */
-
-
-
-
-
 /* ####
 #######
 #######  Handling of how the "carousel" of users behaves
