@@ -14,27 +14,15 @@ if(empty($_POST["username"]) || empty($_POST["password"])) {
 
 $username = htmlspecialchars($_POST["username"]);
 $password = htmlspecialchars($_POST["password"]);
-$random_pic = random_pic(); // Random profile picture
+$picture_hash = hash("sha256", $username . $password . rand(1, 500));
 
 $pass_hash = password_hash($password, PASSWORD_BCRYPT);
 
 $stmt = $pdo->prepare("INSERT INTO users (username, password, profile_image) VALUES (:username, :password, :profile_image);");
 $stmt->bindParam(":username", $username);
 $stmt->bindParam(":password", $pass_hash);
-$stmt->bindParam(":profile_image", $random_pic);
+$stmt->bindParam(":profile_image", $picture_hash);
 $stmt->execute();
     
-echo "Successfully Registered"; // Temporary
+echo "Successfully Registered : " . " Pic Hash: " . $picture_hash; // Temporary
 
-
-
-
-
-
-
-
-function random_pic($dir = "data/images") {
-    $files = glob($dir . "/*.*");
-    $file = array_rand($files);
-    return $files[$file];
-}
