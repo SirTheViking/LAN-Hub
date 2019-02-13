@@ -14,6 +14,7 @@
 
         <link type="text/css" rel="stylesheet" href="styles/front.css">
         <script src="scripts/jquery.js"></script>
+        <script src="scripts/identicon.js"></script>
     </head>
     <body>
 
