@@ -122,14 +122,23 @@ $(document).ready(function() {
 });
 
 
-// Check for Key Up events in order
-// to add or remove margin from the container
-// and to change what the .current tile is
-$(document).on("keyup", function(e) {
+
+
+
+
+
+/* ####
+#######
+#######  Different events for different ways
+#######  of controlling the carousel
+#######
+####*/
+// Keyboard
+$(document).on("keyup", function(e) { 
     let key = e.which;
     carouselHandler(key);
 });
-// - Same thing but for swipes
+// Swipes
 $(".modal").on("swipe", function(e, swipe) {
     let direction = swipe.direction;
     
@@ -141,7 +150,7 @@ $(".modal").on("swipe", function(e, swipe) {
 
     carouselHandler(direction);
 });
-// - Same thing but for clicks
+// Clicks
 $(".form_avatar").on("click", function() {
     let pos = $(this).offset();
 

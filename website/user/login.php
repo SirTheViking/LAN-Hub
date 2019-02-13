@@ -19,7 +19,7 @@ $stmt->execute();
 $data = $stmt->fetch();
 
 if(empty($data)) {
-    echo "SHITS WACK YO";
+    echo "SHITS WACK YO"; // TODO: Something more informative
     exit(0);
 }
 
@@ -27,7 +27,7 @@ if(password_verify($password, $data["password"])) {
     $_SESSION["logged_in"] = $username;
 
 
-    echo $_SESSION["logged_in"] . " Logged in";
+    echo $_SESSION["logged_in"] . " Logged in"; // TODO: Login
 } else {
     echo "Access Denied";
 }

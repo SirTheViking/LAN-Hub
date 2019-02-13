@@ -24,5 +24,5 @@ $stmt->bindParam(":password", $pass_hash);
 $stmt->bindParam(":profile_image", $picture_hash);
 $stmt->execute();
     
-echo "Successfully Registered : " . " Pic Hash: " . $picture_hash; // Temporary
+echo "Successfully Registered : " . " Pic Hash: " . $picture_hash; // TODO: Register
 
