@@ -2,21 +2,18 @@
 
 require ("db.php");
 
-// Not used but it'll stay here for now
-$response = array(
-    "message" => "{Replace}"
-);
+/**
+ * -[ Used status codes and what they mean:
+ *      * 400 - Bad Request
+ *      * 404 - Not Found
+ *      * 202 - Accepted
+ */
+
 
 
 // If the variables aren't set, no point in continuing
 if(empty($_POST["username"]) || empty($_POST["password"])) {
-    // Bad Request
-    http_response_code(400);
-    $response["message"] = "Both fields need to be filled in!";
-
-    // Return a JSON here
-    echo json_encode($response);
-    exit(0);
+    respond("Both fields need to be filled in!", 400);
 }
 
 
@@ -33,29 +30,29 @@ $data = $stmt->fetch();
 
 // Invalid username (somehow). This shouldn't normally happen
 if(empty($data)) {
-    // Not Found
-    http_response_code(404);
-    $response["message"] = "Wrong username. What did you do?!";
-
-    echo json_encode($response);
-    exit(0);
+    respond("Wrong username. What did you do!?!", 404);
 }
 
 
 // Invalid password
 if(!password_verify($password, $data["password"])) {
-    // Bad Request
-    http_response_code(400);
-    $response["message"] = "Password doesn't work with that username";
-
-    echo json_encode($response);
-    exit(0);
+    respond("Password doesn't work with that username.", 400);
 }
 
 
 $_SESSION["logged_in"] = true;
-// Accepted
-http_response_code(202);
-$response["message"] = "Login successful. Welcome!";
+respond("Login successful. Welcome!", 202);
 
-echo json_encode($response);
+
+
+
+function respond($message, $code) {
+    http_response_code($code);
+
+    $response = array(
+        "message" => $message
+    );
+
+    echo json_encode($message);
+    exit(0);
+}

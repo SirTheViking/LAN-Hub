@@ -2,23 +2,18 @@
 
 require ("db.php");
 
-// Not used but it'll stay here for now
-$response = array(
-    "message" => "{Replace}"
-);
+/**
+ * -[ Used status codes and what they mean:
+ *      * 400 - Bad Request
+ *      * 201 - Created
+ */
+
 
 
 // If the variables aren't set, no point in continuing
 if(empty($_POST["username"]) || empty($_POST["password"])) {
-    // Bad Request
-    http_response_code(400);
-    $response["message"] = "Both fields need to be filled in!";
-
-    // Return a JSON here
-    echo json_encode($response);
-    exit(0);
+    respond("Both fields need to be filled in!", 400);
 }
-
 
 
 
@@ -38,12 +33,19 @@ $stmt->execute();
 
 
 $_SESSION["logged_in"] = true; // Will do for now
+respond("Registration succesfull.", 201);
 
 
-// Created
-http_response_code(201);
-$response["message"] = "Registration successfull";
 
-// Return a JSON here
-echo json_encode($response);
 
+
+function respond($message, $code) {
+    http_response_code($code);
+
+    $response = array(
+        "message" => $message
+    );
+
+    echo json_encode($message);
+    exit(0);
+}
