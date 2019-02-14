@@ -51,13 +51,13 @@ $("form").on("submit", function(e) {
     // and the login url (default values)
     let passwd = $("#login_password").val();
     let uname = $(".current .username").text().trim();
-    let url = "http://localhost:5000/user/login";
+    let url = "http://localhost:5000/user/services/login";
 
     // If .create_new is in focus that means user wants to register
     if($(".create_new").hasClass("current")) {
         // Change username and url to new values
         uname = $("#register_username").val();
-        url = "http://localhost:5000/user/register";
+        url = "http://localhost:5000/user/services/register";
     }
 
     // If password input is empty that's no good
