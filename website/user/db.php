@@ -21,6 +21,11 @@ try {
 }
 
 
+session_start();
+
+
+
+
 
 /**
  * Used in:
