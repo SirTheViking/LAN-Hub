@@ -165,7 +165,7 @@ $(document).on("keyup", function(e) {
     carouselHandler(key);
 });
 // Swipes
-$(".modal").on("swipe", function(e, swipe) {
+$(".avatar_container").on("swipe", function(e, swipe) {
     let direction = swipe.direction;
     
     if(direction == "left") {
