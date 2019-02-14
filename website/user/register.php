@@ -1,5 +1,6 @@
 <?php
 
+// Provides database connection and response() function
 require ("db.php");
 
 /**
@@ -34,18 +35,3 @@ $stmt->execute();
 
 $_SESSION["logged_in"] = true; // Will do for now
 respond("Registration succesfull.", 201);
-
-
-
-
-
-function respond($message, $code) {
-    http_response_code($code);
-
-    $response = array(
-        "message" => $message
-    );
-
-    echo json_encode($message);
-    exit(0);
-}

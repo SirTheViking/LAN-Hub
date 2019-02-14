@@ -1,5 +1,6 @@
 <?php
 
+// Provides database connection and response() function
 require ("db.php");
 
 /**
@@ -42,17 +43,3 @@ if(!password_verify($password, $data["password"])) {
 
 $_SESSION["logged_in"] = true;
 respond("Login successful. Welcome!", 202);
-
-
-
-
-function respond($message, $code) {
-    http_response_code($code);
-
-    $response = array(
-        "message" => $message
-    );
-
-    echo json_encode($message);
-    exit(0);
-}
