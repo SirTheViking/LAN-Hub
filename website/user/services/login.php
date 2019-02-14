@@ -13,7 +13,7 @@ require ("../db.php");
 
 
 // If the variables aren't set, no point in continuing
-if(empty($_POST["username"]) || empty($_POST["password"])) {
+if(empty($_POST["username"]) || empty($_POST["password"]) || empty($_POST["uuid"])) {
     respond("Both fields need to be filled in!", 400);
 }
 
@@ -21,10 +21,12 @@ if(empty($_POST["username"]) || empty($_POST["password"])) {
 
 $username = htmlspecialchars($_POST["username"]);
 $password = htmlspecialchars($_POST["password"]);
+$uuid = htmlspecialchars($_POST["uuid"]); // Unique ID for different session variables
 
 // TODO: Make sure this actually succeeds. If not handle it
-$stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+$stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username AND uuid = :uuid");
 $stmt->bindParam(":username", $username);
+$stmt->bindParam(":uuid", $uuid);
 $stmt->execute();
 
 $data = $stmt->fetch();
@@ -41,5 +43,14 @@ if(!password_verify($password, $data["password"])) {
 }
 
 
-$_SESSION["logged_in"] = true;
+
+// An array of all the required session variables
+// TODO: Set the session key as a user ID so that they don't get tangled up
+$session = array(
+    "status" => true,
+    "username" => $username,
+    "maybe_more_here" => "probably"
+);
+
+$_SESSION[$uuid] = $session;
 respond("Login successful. Welcome!", 202);

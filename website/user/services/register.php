@@ -22,16 +22,26 @@ if(empty($_POST["username"]) || empty($_POST["password"])) {
 $username = htmlspecialchars($_POST["username"]);
 $password = htmlspecialchars($_POST["password"]);
 $picture_hash = hash("sha256", $username . $password . rand(1, 500));
+$uuid = substr($picture_hash, 0, 8);
 
 $pass_hash = password_hash($password, PASSWORD_BCRYPT);
 
 // TODO: Make sure this actually succeeds. If not handle it
-$stmt = $pdo->prepare("INSERT INTO users (username, password, profile_image) VALUES (:username, :password, :profile_image);");
+$stmt = $pdo->prepare("INSERT INTO users (username, password, uuid, profile_image) VALUES (:username, :password, :uuid, :profile_image);");
 $stmt->bindParam(":username", $username);
 $stmt->bindParam(":password", $pass_hash);
+$stmt->bindParam(":uuid", $uuid);
 $stmt->bindParam(":profile_image", $picture_hash);
 $stmt->execute();
 
 
-$_SESSION["logged_in"] = true; // Will do for now
+// An array of all the required session variables
+// TODO: Set the session key as a user ID so that they don't get tangled up
+$session = array(
+    "status" => true,
+    "username" => $username,
+    "maybe_more_here" => "probably"
+);
+
+$_SESSION[$uuid] = $session;
 respond("Registration succesfull.", 201);

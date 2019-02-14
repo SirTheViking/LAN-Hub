@@ -13,9 +13,9 @@
         <title>Welcome</title>
 
         <link type="text/css" rel="stylesheet" href="styles/front.css">
-        <script src="scripts/jquery.js"></script>
-        <script src="scripts/jquery-mobile-events.js"></script>
-        <script src="scripts/identicon.js"></script>
+        <script type="text/javascript" src="scripts/jquery.js"></script>
+        <script type="text/javascript" src="scripts/jquery-mobile-events.js"></script>
+        <script type="text/javascript" src="scripts/identicon.js"></script>
     </head>
     <body>
 
@@ -29,7 +29,7 @@
 
                         foreach($obj as $user) {
                             echo '
-                                <div id="' . $user->id . '" class="form_avatar user">
+                                <div id="' . $user->uuid . '" class="form_avatar user">
                                     <div class="thumb_small">
                                         <img src="' . $user->profile_image . '">
                                         
