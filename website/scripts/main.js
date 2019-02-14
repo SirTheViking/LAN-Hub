@@ -61,7 +61,7 @@ $("form").on("submit", function(e) {
     }
 
     // If password input is empty that's no good
-    if(passwd.length == 0) {
+    if(passwd.length == 0 || uname.length == 0) {
         // Show that the fields are required
         $("form input").each(function(i) {
             $(this).addClass("required");
@@ -72,8 +72,34 @@ $("form").on("submit", function(e) {
 
     // Send the request to wherever it's supposed to go
     $.post(url, {username: uname, password: passwd})
-        .done(function(data) {
-                // TODO: Redirect or something
+        .done(function(data, status, xhr) {
+            // TODO: Redirect or something
+            let code = xhr.status;
+
+            // TODO: Maybe remove switches
+            switch(code) {
+                case 201: // Created
+                    console.log(data);
+                    break;
+
+                case 202: // Accepted
+                    console.log(data);
+                    break;
+            }
+
+        }).fail(function(xhr) {
+
+            let code = xhr.status;
+
+            switch(code) {
+                case 400: // Bad Request
+                    console.log(xhr.responseText);
+                    break;
+
+                case 404: // Not Found
+                    console.log(xhr.responseText);
+                    break;
+            }
         });
 });
 
