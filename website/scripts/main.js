@@ -53,6 +53,9 @@ $("form").on("submit", function(e) {
     let uname = $(".current .username").text().trim();
     let url = "http://localhost:5000/user/services/login";
 
+    // The registration form doesn't care about this only login
+    let uuid = $(".current").attr("id"); 
+
     // If .create_new is in focus that means user wants to register
     if($(".create_new").hasClass("current")) {
         // Change username and url to new values
@@ -71,21 +74,10 @@ $("form").on("submit", function(e) {
     }
 
     // Send the request to wherever it's supposed to go
-    $.post(url, {username: uname, password: passwd})
+    $.post(url, {username: uname, password: passwd, uuid: uuid})
         .done(function(data, status, xhr) {
-            // TODO: Redirect or something
-            let code = xhr.status;
-
-            // TODO: Maybe remove switches
-            switch(code) {
-                case 201: // Created
-                    console.log(data);
-                    break;
-
-                case 202: // Accepted
-                    console.log(data);
-                    break;
-            }
+            // Codes: 201, 202
+            redirect("http://localhost:5000/user/home", "POST", uuid);
 
         }).fail(function(xhr) {
 
@@ -256,4 +248,31 @@ function carouselHandler(key) {
             "cursor": "default"
         });
     }
+}
+
+
+/**
+ * Create a new hidden form and submit it with the required
+ * values in order to get a nice and clean redirect to the
+ * home page after a login TODO: and register
+ * 
+ * @param {string} url      The url where the form redirects to
+ * @param {string} method   What the method should be GET/POST
+ * @param {string} uuid     The user uuid used to authenticate after login
+ */
+function redirect(url, method, uuid) {
+    let form = document.createElement("form");
+    let input = document.createElement("input");
+
+    form.method = method;
+    form.action = url;
+    input.value = uuid;
+    input.name = "uuid";
+
+    form.appendChild(input);
+    form.style.display = "none";
+
+    document.body.appendChild(form);
+
+    form.submit();
 }
