@@ -1,8 +1,3 @@
-// Variables when working with no domain...
-let hostname = window.location.hostname;
-let port = window.location.port;
-
-
 /* ####
 #######
 #######  Small tweaks based on screen size
@@ -56,7 +51,7 @@ $("form").on("submit", function(e) {
     // and the login url (default values)
     let passwd = $("#login_password").val();
     let uname = $(".current .username").text().trim();
-    let url = `http://${hostname}:${port}/user/services/login`;
+    let url = `/user/services/login`;
 
     // The registration form doesn't care about this only login
     let uuid = $(".current").attr("id"); 
@@ -65,7 +60,7 @@ $("form").on("submit", function(e) {
     if($(".create_new").hasClass("current")) {
         // Change username and url to new values
         uname = $("#register_username").val();
-        url = `http://${hostname}:${port}/user/services/register`;
+        url = `/user/services/register`;
     }
 
     // If password input is empty that's no good
@@ -82,7 +77,7 @@ $("form").on("submit", function(e) {
     $.post(url, {username: uname, password: passwd, uuid: uuid})
         .done(function(data, status, xhr) {
             // Codes: 201, 202
-            redirect(`http://${hostname}:${port}/user/home`, "POST", uuid);
+            redirect(`/user/home`, "POST", uuid);
 
         }).fail(function(xhr) {
 
