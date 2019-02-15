@@ -13,9 +13,9 @@
         <title>Welcome</title>
 
         <link type="text/css" rel="stylesheet" href="styles/front.css">
-        <script type="text/javascript" src="scripts/jquery.js"></script>
-        <script type="text/javascript" src="scripts/jquery-mobile-events.js"></script>
-        <script type="text/javascript" src="scripts/identicon.js"></script>
+        <script type="text/javascript" src="scripts/lib/jquery.js"></script>
+        <script type="text/javascript" src="scripts/lib/jquery-mobile-events.js"></script>
+        <script type="text/javascript" src="scripts/lib/identicon.js"></script>
     </head>
     <body>
 
