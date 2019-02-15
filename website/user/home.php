@@ -20,7 +20,9 @@
     </head>
     <body>
 
-
+        <?php 
+            echo "WELCOME! " . $_SESSION[$uuid]["username"];
+        ?>
 
     </body>
 </html>

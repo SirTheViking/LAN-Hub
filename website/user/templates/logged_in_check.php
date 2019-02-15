@@ -5,7 +5,7 @@ session_start();
 // TODO: MAKE IT WORK
 
 if(empty($_POST["uuid"])) {
-    echo "woopsies";
+    header("Location: http://localhost:5000/");
     exit(0); // Redirect here
 }
 
@@ -13,8 +13,9 @@ if(empty($_POST["uuid"])) {
 $uuid = htmlspecialchars($_POST["uuid"]);
 
 if($_SESSION[$uuid]["status"] != true) {
-    echo "You're an imposter!";
+    header("Location: http://localhost:5000/");
+    exit(0);
 }
 
-
-// If it's a success it's after the checks
+// If the checks above don't trigger 
+// it's fine and the page will render normally
