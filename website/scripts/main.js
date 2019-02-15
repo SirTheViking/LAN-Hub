@@ -82,14 +82,17 @@ $("form").on("submit", function(e) {
         }).fail(function(xhr) {
 
             let code = xhr.status;
+            let status = $(".current .status");
+
+            status.addClass("problem");
 
             switch(code) {
                 case 400: // Bad Request
-                    console.log(xhr.responseText);
+                    status.text("Wrong password!");
                     break;
 
                 case 404: // Not Found
-                    console.log(xhr.responseText);
+                    status.text("???");
                     break;
             }
         });

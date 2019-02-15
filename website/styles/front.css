@@ -238,6 +238,8 @@ body {
 .current {
     width: 200px;
     height: 200px;
+
+    opacity: 1;
 }
 
 .current .thumb_small {
@@ -254,7 +256,11 @@ body {
 
 
 .required {
-    border: 1px solid #ff0932 !important;
+    border: 1px solid var(--error-color) !important;
+}
+
+.problem {
+    color: var(--error-color) !important;
 }
 
 
