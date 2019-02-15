@@ -36,7 +36,6 @@ $stmt->execute();
 
 
 // An array of all the required session variables
-// TODO: Set the session key as a user ID so that they don't get tangled up
 $session = array(
     "status" => true,
     "username" => $username,
