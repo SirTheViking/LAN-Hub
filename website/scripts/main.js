@@ -105,9 +105,9 @@ $("form").on("submit", function(e) {
 #######  Handling of how the "carousel" of users behaves
 #######
 ####*/
-var center = window.innerWidth / 2; // Center of window
-var a_width = $(".current").first().outerWidth(true); // Total width of avatar (+margin, padding, border)
-var margin = 0; // Keep check of how much margin should actually be added
+let center = window.innerWidth / 2; // Center of window
+let a_width = $(".current").first().outerWidth(true); // Total width of avatar (+margin, padding, border)
+let margin = 0; // Keep check of how much margin should actually be added
 
 
 // If the amount of users is even, center one of them
@@ -191,7 +191,17 @@ $(".form_avatar").on("click", function() {
 #######
 ####*/
 
-// Handle the keyup and swipe events
+/**
+ * Move the carousel in the direction that the event
+ * requests. Events may be swipes, clicks, or key presses.
+ * Handle the direction, add or subtract the required margin
+ * and move the .current class to the avatar in center.
+ * 
+ * If avatar in center is the new user one, display the username
+ * input.
+ * 
+ * @param {string/number} key The direction in which the carousel should be going 
+ */
 function carouselHandler(key) {
     let container = $(".avatar_container");
     let current = $(".current");
