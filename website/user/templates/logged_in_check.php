@@ -12,6 +12,9 @@ if(empty($_POST["uuid"])) {
 
 $uuid = htmlspecialchars($_POST["uuid"]);
 
-if($_SESSION[$uuid]["status"] == true) {
-    echo "Nice.";
+if($_SESSION[$uuid]["status"] != true) {
+    echo "You're an imposter!";
 }
+
+
+// If it's a success it's after the checks

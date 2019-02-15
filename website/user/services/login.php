@@ -33,7 +33,7 @@ $data = $stmt->fetch();
 
 // Invalid username (somehow). This shouldn't normally happen
 if(empty($data)) {
-    respond("Wrong username. What did you do!?!", 404);
+    respond("Wrong username or UUID. What did you do!?!", 404);
 }
 
 
