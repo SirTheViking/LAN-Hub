@@ -63,8 +63,8 @@
                 </div>
 
                 <form method="post" action="#">
-                    <input id="register_username" type="text" placeholder="Username" autocomplete="off">
-                    <input id="login_password" type="password" placeholder="Password" autocomplete="off">
+                    <input id="form_username" type="text" placeholder="Username" autocomplete="off">
+                    <input id="form_password" type="password" placeholder="Password" autocomplete="off">
                     <button type="submit">Enter</button>
                 </form>
             </div>

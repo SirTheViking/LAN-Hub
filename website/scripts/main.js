@@ -49,7 +49,7 @@ $("form").on("submit", function(e) {
 
     // Get the password, whatever is in the .username of the .current
     // and the login url (default values)
-    let passwd = $("#login_password").val();
+    let passwd = $("#form_password").val();
     let uname = $(".current .username").text().trim();
     let url = `/user/services/login`;
 
@@ -59,7 +59,7 @@ $("form").on("submit", function(e) {
     // If .create_new is in focus that means user wants to register
     if($(".create_new").hasClass("current")) {
         // Change username and url to new values
-        uname = $("#register_username").val();
+        uname = $("#form_username").val();
         url = `/user/services/register`;
     }
 
