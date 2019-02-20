@@ -1,0 +1,321 @@
+@import "__fonts";
+@import "__variables";
+
+
+
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: $bodyBg;
+
+    overflow: hidden;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-image: url("/resources/images/christian-haley-christian-haley-futureshantytown-a-2018.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: 1;
+}
+
+
+
+
+.avatar_container {
+    width: auto; 
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all .5s;
+}
+
+
+.form_avatar {
+    width: 200px;
+    height: 200px;
+
+    margin: 0 20px 80px 20px;
+}
+
+
+.form_avatar .thumb_small {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+    border-radius: $borderRadiusSmall;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    transition: $transitionSpeed;
+    box-shadow: $boxShadowBig;
+
+    z-index: 90;
+
+    cursor: default;
+}
+
+
+
+.form_avatar .thumb_small img {
+    min-height: 100%;
+    height: auto;
+    width: 100%;
+    z-index: 1;
+}
+
+.thumb_small .overlay {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(24, 27, 33, 0.8);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    z-index: 2;
+}
+
+.thumb_small .overlay .status {
+    font-family: Poppins;
+    font-size: 14px;
+    color: $subtitleColor;
+
+    transition: $transitionSpeed;
+}
+
+.thumb_small .overlay .username {
+    font-family: Poppins;
+    font-size: 24px;
+    color: $titleColor;
+}
+
+
+
+
+
+.create_new {
+    opacity: 0.6;
+    transition: all .5s;
+}
+
+.create_new .thumb {
+    color: $subtitleColor;
+
+    box-shadow: none !important;
+}
+
+.create_new svg path {
+    fill: $subtitleColor;
+    transition: all .5s;
+}
+
+.create_new svg {
+    width: 35px;
+    height: 35px;
+}
+
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: $bodyBgTransparent;
+
+    z-index: 60;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    padding-top: 20%;
+}
+
+
+.modal form {
+    width: 400px;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal form input {
+    width: 70%;
+    height: 50px;
+
+    padding: 10px;
+    margin-bottom: 10px;
+
+    background: none;
+    border: none;
+    border-bottom: 1px solid $subtitleColor;
+
+    font-family: Poppins;
+    color: $subtitleColor;
+}
+
+#register_username {
+    opacity: 0;
+    margin-top: -60px;
+
+    transition: $transitionSpeed;
+}
+
+.modal form button {
+    width: 70%;
+    border-radius: $borderRadiusBig;
+    height: 70px;
+
+    margin: 40px 0 50px 0;
+
+    border: none;
+    background: none;
+    border: 2px solid $borderColor;
+
+    cursor: pointer;
+
+    font-family: Poppins;
+    color: $borderColor;
+    font-size: 18px;
+
+    transition: all .5s;
+}
+
+.modal form button:hover {
+    background-color: $borderColor;
+    color: $titleColor;
+}
+
+.modal form header {
+    font-size: 26px;
+}
+
+
+
+
+
+.current {
+    width: 200px;
+    height: 200px;
+
+    opacity: 1;
+}
+
+.current .thumb_small {
+    transform: scale(1.2);
+
+    box-shadow: $boxShadowBig;
+}
+
+.current .overlay .status {
+    color: $borderColor;
+}
+
+
+
+
+.required {
+    border: 1px solid $errorColor !important;
+}
+
+.problem {
+    color: $errorColor !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+    }
+
+    #container {
+        position: relative;
+        width: 100%;
+    }
+}
+
+
+
+@media screen and (min-width: 768px) {
+    body {
+        justify-content: flex-start;
+    }
+
+    #container {
+        position: relative;
+        width: 768px;
+    }
+
+}
+
+
+
+@media screen and (min-width: 980px) {
+    body {
+        justify-content: center;
+    }
+
+    #container {
+        position: relative;
+        width: 980px;
+    }
+}
+
+
+
+@media screen and (min-width: 1200px) {
+    #container {
+        position: absolute;
+        width: 1200px;
+    }
+}

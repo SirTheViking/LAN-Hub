@@ -12,7 +12,7 @@
         
         <title>Welcome</title>
 
-        <link type="text/css" rel="stylesheet" href="styles/front.css">
+        <link type="text/css" rel="stylesheet" href="styles/css/front.css">
         <script type="text/javascript" src="scripts/lib/jquery.js"></script>
         <script type="text/javascript" src="scripts/lib/jquery-mobile-events.js"></script>
         <script type="text/javascript" src="scripts/lib/identicon.js"></script>
