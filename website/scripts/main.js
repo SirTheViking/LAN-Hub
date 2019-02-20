@@ -133,7 +133,7 @@ $(document).ready(function() {
 
             // If it's the new user tile show the username input aswell
             if($(this).hasClass("create_new")) {
-                $("#register_username").css({
+                $("#form_username").css({
                     "opacity": "1",
                     "margin-top": "0"
                 });
@@ -247,7 +247,7 @@ function carouselHandler(key) {
 
     // This means the registration form should be visible
     if($(".current").hasClass("create_new")) {
-        $("#register_username").css({
+        $("#form_username").css({
             "opacity": "1",
             "margin-top": "0",
             "cursor": "text"
@@ -255,7 +255,7 @@ function carouselHandler(key) {
     } else {
         // Gotta hide it as best as possible
         // while still having a smooth animation
-        $("#register_username").css({
+        $("#form_username").css({
             "opacity": "0",
             "margin-top": "-60px",
             "cursor": "default"
