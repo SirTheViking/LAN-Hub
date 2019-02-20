@@ -1,42 +1,32 @@
-@import "__fonts";
-@import "__variables";
+@import "_variables";
+@import "_fonts";
+@import "_reset";
 
 
+body {
+    @extend html;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: $bodyBg;
+    overflow: hidden;
+}
 
-html {
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+
     width: 100%;
     height: 100%;
-    margin: 0;
-    padding: 0;
 
-    body {
-        @extend html;
+    background-image: url("/resources/images/christian-haley-christian-haley-futureshantytown-a-2018.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-        background-color: $bodyBg;
-
-        overflow: hidden;
-    }
-
-    .background {
-        position: fixed;
-        top: 0;
-        left: 0;
-    
-        width: 100%;
-        height: 100%;
-    
-        background-image: url("/resources/images/christian-haley-christian-haley-futureshantytown-a-2018.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    
-        z-index: 1;
-    }
+    z-index: 1;
 }
 
 
