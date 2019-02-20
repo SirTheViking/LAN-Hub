@@ -14,14 +14,21 @@
   font-family: Poppins Bold;
   src: url("/resources/fonts/Poppins-Bold.ttf");
 }
-body, html {
+.required {
+  border: 1px solid #ff004c !important;
+}
+
+.problem {
+  color: #ff004c !important;
+}
+
+html, html body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
 }
-
-body {
+html body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,8 +36,7 @@ body {
   background-color: #181b21;
   overflow: hidden;
 }
-
-.background {
+html .background {
   position: fixed;
   top: 0;
   left: 0;
@@ -41,89 +47,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   z-index: 1;
-}
-
-.avatar_container {
-  width: auto;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.5s;
-}
-
-.form_avatar {
-  width: 200px;
-  height: 200px;
-  margin: 0 20px 80px 20px;
-}
-
-.form_avatar .thumb_small {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 4px;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.2s;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  z-index: 90;
-  cursor: default;
-}
-
-.form_avatar .thumb_small img {
-  min-height: 100%;
-  height: auto;
-  width: 100%;
-  z-index: 1;
-}
-
-.thumb_small .overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(24, 27, 33, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 2;
-}
-
-.thumb_small .overlay .status {
-  font-family: Poppins;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.507);
-  transition: all 0.2s;
-}
-
-.thumb_small .overlay .username {
-  font-family: Poppins;
-  font-size: 24px;
-  color: #d0deeb;
-}
-
-.create_new {
-  opacity: 0.6;
-  transition: all 0.5s;
-}
-
-.create_new .thumb {
-  color: rgba(255, 255, 255, 0.507);
-  box-shadow: none !important;
-}
-
-.create_new svg path {
-  fill: rgba(255, 255, 255, 0.507);
-  transition: all 0.5s;
-}
-
-.create_new svg {
-  width: 35px;
-  height: 35px;
 }
 
 .modal {
@@ -140,7 +63,6 @@ body {
   flex-direction: column;
   padding-top: 20%;
 }
-
 .modal form {
   width: 400px;
   height: auto;
@@ -149,7 +71,6 @@ body {
   align-items: center;
   flex-direction: column;
 }
-
 .modal form input {
   width: 70%;
   height: 50px;
@@ -161,13 +82,11 @@ body {
   font-family: Poppins;
   color: rgba(255, 255, 255, 0.507);
 }
-
-#register_username {
+.modal form input#form_username {
   opacity: 0;
   margin-top: -60px;
   transition: all 0.2s;
 }
-
 .modal form button {
   width: 70%;
   border-radius: 40px;
@@ -182,45 +101,104 @@ body {
   font-size: 18px;
   transition: all 0.5s;
 }
-
 .modal form button:hover {
   background-color: rgba(78, 161, 255, 0.623);
   color: #d0deeb;
 }
-
 .modal form header {
   font-size: 26px;
 }
 
-.current {
+.avatar_container {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+}
+.avatar_container .form_avatar {
+  width: 200px;
+  height: 200px;
+  margin: 0 20px 80px 20px;
+}
+.avatar_container .form_avatar .thumb_small {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  z-index: 90;
+  cursor: default;
+}
+.avatar_container .form_avatar .thumb_small img {
+  min-height: 100%;
+  height: auto;
+  width: 100%;
+  z-index: 1;
+}
+.avatar_container .form_avatar .thumb_small .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(24, 27, 33, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+}
+.avatar_container .form_avatar .thumb_small .overlay .status {
+  font-family: Poppins;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.507);
+  transition: all 0.2s;
+}
+.avatar_container .form_avatar .thumb_small .overlay .username {
+  font-family: Poppins;
+  font-size: 24px;
+  color: #d0deeb;
+}
+.avatar_container .create_new {
+  opacity: 0.6;
+  transition: all 0.5s;
+}
+.avatar_container .create_new .thumb {
+  color: rgba(255, 255, 255, 0.507);
+  box-shadow: none !important;
+}
+.avatar_container .create_new svg {
+  width: 35px;
+  height: 35px;
+}
+.avatar_container .create_new svg path {
+  fill: rgba(255, 255, 255, 0.507);
+  transition: all 0.5s;
+}
+.avatar_container .current {
   width: 200px;
   height: 200px;
   opacity: 1;
 }
-
-.current .thumb_small {
+.avatar_container .current .thumb_small {
   transform: scale(1.2);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-
-.current .overlay .status {
-  color: rgba(78, 161, 255, 0.623);
-}
-
-.required {
-  border: 1px solid #ff004c !important;
-}
-
-.problem {
-  color: #ff004c !important;
+.avatar_container .current .status {
+  color: rgba(78, 161, 255, 0.623) !important;
 }
 
 @media screen and (max-width: 768px) {
   body {
     justify-content: flex-start;
   }
-
-  #container {
+  body #container {
     position: relative;
     width: 100%;
   }
@@ -229,8 +207,7 @@ body {
   body {
     justify-content: flex-start;
   }
-
-  #container {
+  body #container {
     position: relative;
     width: 768px;
   }
@@ -239,8 +216,7 @@ body {
   body {
     justify-content: center;
   }
-
-  #container {
+  body #container {
     position: relative;
     width: 980px;
   }
