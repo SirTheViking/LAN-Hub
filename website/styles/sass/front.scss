@@ -2,18 +2,6 @@
 @import "__variables";
 
 
-// Misc classes
-.required {
-    border: 1px solid $errorColor !important;
-}
-
-.problem {
-    color: $errorColor !important;
-}
-
-
-
-
 
 html {
     width: 100%;
@@ -252,8 +240,27 @@ html {
         .status {
             color: $borderColor !important;
         }
+
+        // Misc classes
+        .required {
+            border: 1px solid $errorColor !important;
+        }
+
+        .problem {
+            color: $errorColor !important;
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

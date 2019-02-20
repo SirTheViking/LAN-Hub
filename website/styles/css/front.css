@@ -14,14 +14,6 @@
   font-family: Poppins Bold;
   src: url("/resources/fonts/Poppins-Bold.ttf");
 }
-.required {
-  border: 1px solid #ff004c !important;
-}
-
-.problem {
-  color: #ff004c !important;
-}
-
 html, html body {
   width: 100%;
   height: 100%;
@@ -192,6 +184,12 @@ html .background {
 }
 .avatar_container .current .status {
   color: rgba(78, 161, 255, 0.623) !important;
+}
+.avatar_container .current .required {
+  border: 1px solid #ff004c !important;
+}
+.avatar_container .current .problem {
+  color: #ff004c !important;
 }
 
 @media screen and (max-width: 768px) {
