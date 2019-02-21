@@ -1,12 +1,15 @@
 nav {
   width: 100%;
-  height: auto;
+  height: 50px;
   padding: 10px 0 10px 0;
   font-family: Poppins;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
+  position: relative;
+  transition: all 0.2s;
+  z-index: 5;
+  background-color: #edf3f8;
 }
 nav input {
   width: 1200px;
@@ -15,23 +18,84 @@ nav input {
   padding: 10px;
   text-align: center;
   font-family: inherit;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(24, 27, 33, 0.1);
+}
+nav.active {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.05), 0 10px 10px rgba(0, 0, 0, 0.05);
 }
 
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 100%;
+  margin-left: -400px;
+  margin-top: 70px;
+  opacity: 0;
+  background-color: #edf3f8;
+  transition: all 0.2s;
+  z-index: 6;
+}
+.sidebar.active {
+  margin-left: 0;
+  opacity: 1;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.05), 0 10px 10px rgba(0, 0, 0, 0.05);
+}
+.sidebar .profile {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(24, 27, 33, 0.1);
+}
+.sidebar .profile .thumb {
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 4px;
+  margin: 0 0 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.sidebar .profile .thumb img {
+  min-height: 100%;
+  height: auto;
+  width: 100%;
+}
+.sidebar .profile #name {
+  font-family: Poppins;
+  font-size: 26px;
+  color: #181b21;
+}
+
+/*!
+ * Hamburgers
+ * @description Tasty CSS-animated hamburgers
+ * @author Jonathan Suh @jonsuh
+ * @site https://jonsuh.com/hamburgers
+ * @link https://github.com/jonsuh/hamburgers
+ */
 .hamburger {
-  padding: 15px 15px;
   display: inline-block;
   cursor: pointer;
   transition-property: opacity, filter;
   transition-duration: 0.15s;
   transition-timing-function: linear;
-  font: inherit;
   color: inherit;
   text-transform: none;
   background-color: transparent;
   border: 0;
   margin: 0;
   overflow: visible;
+  position: absolute;
+  left: 15px;
+  transform: translate(-50%, -50%);
+  transform: scale(0.7);
 }
 .hamburger:hover {
   opacity: 0.7;
@@ -39,73 +103,54 @@ nav input {
 .hamburger.is-active .hamburger-inner,
 .hamburger.is-active .hamburger-inner::before,
 .hamburger.is-active .hamburger-inner::after {
-  background-color: #000;
+  background-color: rgba(24, 27, 33, 0.1);
 }
 .hamburger.is-active:hover {
   opacity: 0.7;
 }
-
-.hamburger-box {
+.hamburger .hamburger-box {
   width: 40px;
   height: 24px;
   display: inline-block;
   position: relative;
 }
-
-.hamburger-inner {
+.hamburger .hamburger-box .hamburger-inner {
   display: block;
   top: 50%;
   margin-top: -2px;
+  top: 2px;
 }
-
-.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+.hamburger .hamburger-box .hamburger-inner, .hamburger .hamburger-box .hamburger-inner::before, .hamburger .hamburger-box .hamburger-inner::after {
   width: 40px;
-  height: 4px;
-  background-color: #000;
+  height: 5px;
+  background-color: rgba(24, 27, 33, 0.1);
   border-radius: 4px;
   position: absolute;
   transition-property: transform;
   transition-duration: 0.15s;
   transition-timing-function: ease;
 }
-
-.hamburger-inner::before, .hamburger-inner::after {
+.hamburger .hamburger-box .hamburger-inner::before, .hamburger .hamburger-box .hamburger-inner::after {
   content: "";
   display: block;
 }
-
-.hamburger-inner::before {
-  top: -10px;
-}
-
-.hamburger-inner::after {
-  bottom: -10px;
-}
-
-.hamburger--slider .hamburger-inner {
-  top: 2px;
-}
-
-.hamburger--slider .hamburger-inner::before {
+.hamburger .hamburger-box .hamburger-inner::before {
   top: 10px;
   transition-property: transform, opacity;
   transition-timing-function: ease;
   transition-duration: 0.15s;
 }
-
-.hamburger--slider .hamburger-inner::after {
+.hamburger .hamburger-box .hamburger-inner::after {
   top: 20px;
 }
 
 .hamburger--slider.is-active .hamburger-inner {
   transform: translate3d(0, 10px, 0) rotate(45deg);
 }
-
 .hamburger--slider.is-active .hamburger-inner::before {
   transform: rotate(-45deg) translate3d(-5.71429px, -6px, 0);
   opacity: 0;
 }
-
 .hamburger--slider.is-active .hamburger-inner::after {
   transform: translate3d(0, -20px, 0) rotate(-90deg);
 }
@@ -130,6 +175,7 @@ body, html {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: #fff;
 }
 
 @font-face {
@@ -148,11 +194,10 @@ body, html {
   font-family: Poppins Bold;
   src: url("/resources/fonts/Poppins-Bold.ttf");
 }
-body {
-  background-image: url("/resources/images/christian-haley-christian-haley-futureshantytown-a-2018.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.carousel {
+  width: 100%;
+  height: 500px;
+  background-color: #edf3f8;
 }
 
 /*# sourceMappingURL=home.css.map */
