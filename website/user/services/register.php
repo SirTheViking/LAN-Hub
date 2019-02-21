@@ -39,7 +39,7 @@ $stmt->execute();
 $session = array(
     "status" => true,
     "username" => $username,
-    "maybe_more_here" => "probably"
+    "profile_image" => $picture_hash
 );
 
 $_SESSION[$uuid] = $session;

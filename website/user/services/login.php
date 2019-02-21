@@ -48,7 +48,7 @@ if(!password_verify($password, $data["password"])) {
 $session = array(
     "status" => true,
     "username" => $username,
-    "maybe_more_here" => "probably"
+    "profile_image" => $data["profile_image"]
 );
 
 $_SESSION[$uuid] = $session;
