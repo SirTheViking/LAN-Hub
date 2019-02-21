@@ -22,5 +22,9 @@
 
         <?php include ("templates/nav.php"); ?>
 
+        <div class="carousel">
+            
+        </div>
+
     </body>
 </html>
