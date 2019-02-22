@@ -1,3 +1,7 @@
+<!-- 
+    PHP Variables are coming from the login check at the
+    top of every page. For now atleast.
+-->
 <nav>
     <div class="hamburger hamburger--slider" type="button">
         <span class="hamburger-box">
@@ -19,7 +23,10 @@
     </div>
 
     <div class="links">
-
+        <a href="#">ICON: Link 1</a>
+        <a href="#">ICON: Link 2</a>
+        <a href="#">ICON: Link 3</a>
+        <a href="#">ICON: Link 4</a>
     </div>
 </div>
 
