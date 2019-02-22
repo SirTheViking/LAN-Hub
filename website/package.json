@@ -1,0 +1,23 @@
+{
+  "name": "lan-hub",
+  "version": "1.0.0",
+  "description": "Local network movie library",
+  "main": "app.js",
+  "scripts": {
+    "watch-changes": "concurrently \"npm:watch-js\" \"npm:watch-sass\"",
+    "watch-js": "echo [i] Watching JS files for changes && watchify scripts/bootstrap.js -o scripts/app.js",
+    "watch-sass": "sass --watch styles/sass:styles/css"
+  },
+  "author": "SirTheViking",
+  "license": "ISC",
+  "dependencies": {
+    "identicon.js": "^2.3.3",
+    "jquery": "^3.3.1",
+    "jquery-touch-events": "git+https://github.com/benmajor/jQuery-Touch-Events.git"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "sass": "^1.17.1",
+    "watchify": "^3.11.1"
+  }
+}
