@@ -1,10 +1,4 @@
-@import "_variables";
-@import "_fonts";
-@import "_reset";
-
-
-body {
-    @extend html;
+body#login { // TODO: Change filename to login
     @include flex(center, center);
     flex-direction: column;
     background-color: $bodyBg;
