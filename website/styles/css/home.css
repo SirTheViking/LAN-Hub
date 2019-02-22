@@ -72,6 +72,24 @@ nav.active {
   font-size: 26px;
   color: #181b21;
 }
+.sidebar .links {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.sidebar .links a {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-family: Poppins;
+  color: #181b21;
+}
 
 /*!
  * Hamburgers

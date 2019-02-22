@@ -78,9 +78,7 @@ nav {
         width: 100%;
         height: 300px; // Temporary
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex(center, center);
         flex-direction: column;
 
         border-bottom: 1px solid $borderColorTransparent;
@@ -93,9 +91,7 @@ nav {
             border-radius: $borderRadiusSmall;
             margin: 0 0 30px 0;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            @include flex(center, center);
 
             box-shadow: $boxShadowBig;
 
@@ -110,6 +106,26 @@ nav {
         #name {
             font-family: Poppins;
             font-size: 26px;
+            color: #181b21;
+        }
+    }
+
+
+    .links {
+        width: 100%;
+        height: 400px;
+
+        @include flex(center, center);
+        flex-direction: column;
+
+        a {
+            width: 100%;
+            height: 60px; //Temporary
+
+            @include flex(center, center);
+
+            text-decoration: none;
+            font-family: Poppins; // Change this to a variable
             color: #181b21;
         }
     }
