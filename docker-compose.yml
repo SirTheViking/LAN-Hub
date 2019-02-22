@@ -17,7 +17,7 @@ services:
     build: ./user_service
     volumes: 
       - ./user_service:/usr/src/app
-      - ./data:/usr/src/app/data
+      #- ./data:/usr/src/app/data
     ports: 
       - 1337:80
     links:
@@ -31,7 +31,7 @@ services:
     build: ./website
     volumes:
       - ./website:/var/www/html
-      - ./data:/var/www/html/user/data
+      #- ./data:/var/www/html/user/data
     ports:
       - 5000:80
     depends_on:
