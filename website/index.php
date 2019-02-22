@@ -13,9 +13,6 @@
         <title>Welcome</title>
 
         <link type="text/css" rel="stylesheet" href="/styles/css/front.css">
-        <script type="text/javascript" src="/scripts/lib/jquery.js"></script>
-        <script type="text/javascript" src="/scripts/lib/jquery-mobile-events.js"></script>
-        <script type="text/javascript" src="/scripts/lib/identicon.js"></script>
     </head>
     <body>
 
@@ -69,6 +66,6 @@
                 </form>
             </div>
 
-        <script src="scripts/main.js"></script>
+            <script type="text/javascript" src="/scripts/app.js"></script>
     </body>
 </html>
