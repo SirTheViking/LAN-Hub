@@ -9,8 +9,6 @@ $(".modal").css({
 
 
 
-
-
 /* ####
 #######
 #######  Identicon/Profile avatar generation
