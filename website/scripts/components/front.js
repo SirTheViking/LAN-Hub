@@ -15,19 +15,11 @@ $(".modal").css({
 #######  based on the hash
 #######
 ####*/
-let options = {
-    foreground: [78, 161, 255, 100],
-    background: [24, 27, 33, 255], // #181b21
-    margin: 0.2,
-    size: 420,
-    format: "svg"
-};
 
 // For every user that was returned from the database
 $(".form_avatar img").each(function(i) {
     let hash = $(this).attr("src");
-
-    let data = new Identicon(hash, options); // Create new image
+    let data = new Identicon(hash, identicon_options); // Create new image
     $(this).attr("src", "data:image/svg+xml;base64," + data); // Set it as source
 });
 

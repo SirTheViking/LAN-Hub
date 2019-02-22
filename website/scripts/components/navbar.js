@@ -9,16 +9,11 @@ $(".hamburger").on("click", function() {
 });
 
 
-// TODO: Try not to have multiple option configs throughout the code
-let options = {
-    foreground: [78, 161, 255, 100],
-    background: [24, 27, 33, 255], // #181b21
-    margin: 0.2,
-    size: 420,
-    format: "svg"
-};
 
-let hash = $(".profile img").attr("src");
-
-let data = new Identicon(hash, options); // Create new image
-$(".profile img").attr("src", "data:image/svg+xml;base64," + data); // Set it as source
+try { // Maybe there's a better solution but it'll do for now
+    let hash = $(".profile img").attr("src");
+    let data = new Identicon(hash, identicon_options); // Create new image
+    $(".profile img").attr("src", "data:image/svg+xml;base64," + data); // Set it as source
+} catch (err) {
+    console.log("There was no .profile img");
+}
