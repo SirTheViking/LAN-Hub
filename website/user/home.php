@@ -13,11 +13,11 @@
         
         <title>Home</title>
 
-        <link type="text/css" rel="stylesheet" href="/styles/css/home.css">
+        <link type="text/css" rel="stylesheet" href="/styles/css/app.css">
     </head>
-    <body>
+    <body id="home">
 
-        <?php include ("templates/nav.php"); ?>
+        <?php include ("templates/navbar.php"); ?>
 
         <div class="carousel">
             

@@ -12,9 +12,9 @@
         
         <title>Welcome</title>
 
-        <link type="text/css" rel="stylesheet" href="/styles/css/front.css">
+        <link type="text/css" rel="stylesheet" href="/styles/css/app.css">
     </head>
-    <body>
+    <body id="login">
 
         <div class="background"></div>
 
