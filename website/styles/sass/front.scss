@@ -42,7 +42,7 @@ body {
 
     z-index: 60;
 
-    @include flex(flex-start, center);
+    @include flex(center, flex-start);
     flex-direction: column;
 
     padding-top: 20%;

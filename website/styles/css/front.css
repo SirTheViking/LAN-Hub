@@ -53,8 +53,8 @@ body {
   background-color: rgba(24, 27, 33, 0.85);
   z-index: 60;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   flex-direction: column;
   padding-top: 20%;
 }
