@@ -5,9 +5,7 @@
 
 body {
     @extend html;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex(center, center);
     flex-direction: column;
     background-color: $bodyBg;
     overflow: hidden;
@@ -44,9 +42,7 @@ body {
 
     z-index: 60;
 
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    @include flex(flex-start, center);
     flex-direction: column;
 
     padding-top: 20%;
@@ -56,9 +52,7 @@ body {
         width: 400px;
         height: auto;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex(center, center);
         flex-direction: column;
 
         input {
@@ -121,9 +115,7 @@ body {
 .avatar_container {
     width: auto; 
     height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex(center, center);
     transition: all .5s;
 
 
@@ -143,9 +135,7 @@ body {
             border-radius: $borderRadiusSmall;
             margin: 0;
         
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            @include flex(center, center);
             
             transition: $transitionSpeed;
             box-shadow: $boxShadowBig;
@@ -171,9 +161,7 @@ body {
 
                 background-color: rgba(24, 27, 33, 0.8);
 
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                @include flex(center, center);
 
                 flex-direction: column;
 
