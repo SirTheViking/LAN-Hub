@@ -1,8 +1,7 @@
 <?php 
 
 session_start();
-/*
-// TODO: MAKE IT WORK
+
 
 if(empty($_POST["uuid"])) {
     header("Location: /");
@@ -16,13 +15,9 @@ if($_SESSION[$uuid]["status"] != true) {
     header("Location: /");
     exit(0);
 }
-*/
 
 
-// Set the a few variables so that the templates
-// can use them if needed
+$session = $_SESSION[$uuid];
 
-$uuid = htmlspecialchars($_POST["uuid"]); // Temporary
-
-$username = $_SESSION[$uuid]["username"];
-$profile_image = $_SESSION[$uuid]["profile_image"];
+$username = $session["username"];
+$profile_image = $session["profile_image"];
