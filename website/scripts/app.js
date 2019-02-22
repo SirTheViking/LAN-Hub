@@ -13735,6 +13735,10 @@ window.Identicon            = require("identicon.js");
 
 require("jquery-touch-events");
 
+
+// Configuration for different global values
+require("./components/_configs");
+
 // Custom files
 require("./components/front");
 require("./components/navbar");
@@ -13743,7 +13747,15 @@ require("./components/navbar");
 
 
 
-},{"./components/front":9,"./components/navbar":10,"identicon.js":3,"jquery":7,"jquery-touch-events":6}],9:[function(require,module,exports){
+},{"./components/_configs":9,"./components/front":10,"./components/navbar":11,"identicon.js":3,"jquery":7,"jquery-touch-events":6}],9:[function(require,module,exports){
+window.identicon_options = {
+    foreground: [78, 161, 255, 100],
+    background: [24, 27, 33, 255], // #181b21
+    margin: 0.2,
+    size: 420,
+    format: "svg"
+};
+},{}],10:[function(require,module,exports){
 /* ####
 #######
 #######  Small tweaks based on screen size
@@ -13761,19 +13773,11 @@ $(".modal").css({
 #######  based on the hash
 #######
 ####*/
-let options = {
-    foreground: [78, 161, 255, 100],
-    background: [24, 27, 33, 255], // #181b21
-    margin: 0.2,
-    size: 420,
-    format: "svg"
-};
 
 // For every user that was returned from the database
 $(".form_avatar img").each(function(i) {
     let hash = $(this).attr("src");
-
-    let data = new Identicon(hash, options); // Create new image
+    let data = new Identicon(hash, identicon_options); // Create new image
     $(this).attr("src", "data:image/svg+xml;base64," + data); // Set it as source
 });
 
@@ -14033,7 +14037,7 @@ function redirect(url, method, uuid) {
 
     form.submit();
 }
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 /**
  * Handle the navbar click events
  * and data display
@@ -14045,17 +14049,12 @@ $(".hamburger").on("click", function() {
 });
 
 
-// TODO: Try not to have multiple option configs throughout the code
-let options = {
-    foreground: [78, 161, 255, 100],
-    background: [24, 27, 33, 255], // #181b21
-    margin: 0.2,
-    size: 420,
-    format: "svg"
-};
 
-let hash = $(".profile img").attr("src");
-
-let data = new Identicon(hash, options); // Create new image
-$(".profile img").attr("src", "data:image/svg+xml;base64," + data); // Set it as source
+try { // Maybe there's a better solution but it'll do for now
+    let hash = $(".profile img").attr("src");
+    let data = new Identicon(hash, identicon_options); // Create new image
+    $(".profile img").attr("src", "data:image/svg+xml;base64," + data); // Set it as source
+} catch (err) {
+    console.log("There was no .profile img");
+}
 },{}]},{},[8]);
