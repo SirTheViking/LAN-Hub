@@ -15,5 +15,5 @@ try { // Maybe there's a better solution but it'll do for now
     let data = new Identicon(hash, identicon_options); // Create new image
     $(".profile img").attr("src", "data:image/svg+xml;base64," + data); // Set it as source
 } catch (err) {
-    console.log("There was no .profile img");
+    // No element with the given identifiers was found
 }

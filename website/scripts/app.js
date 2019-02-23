@@ -13739,15 +13739,16 @@ require("jquery-touch-events");
 // Configuration for different global values
 require("./components/_configs");
 
+// Actual components TODO: Change above into their own folders
+require("./components/carousel");
+
 // Custom files
 require("./components/front");
 require("./components/navbar");
 
 
 
-
-
-},{"./components/_configs":9,"./components/front":10,"./components/navbar":11,"identicon.js":3,"jquery":7,"jquery-touch-events":6}],9:[function(require,module,exports){
+},{"./components/_configs":9,"./components/carousel":10,"./components/front":11,"./components/navbar":12,"identicon.js":3,"jquery":7,"jquery-touch-events":6}],9:[function(require,module,exports){
 window.identicon_options = {
     foreground: [78, 161, 255, 100],
     background: [24, 27, 33, 255], // #181b21
@@ -13756,6 +13757,160 @@ window.identicon_options = {
     format: "svg"
 };
 },{}],10:[function(require,module,exports){
+function Carousel(container_id, animate = false) {
+    // TODO: Check for a second class so you know if you should have automatic slides
+    this.container  = document.getElementById(container_id);
+    
+    this.items      = this.container.querySelectorAll(".form_avatar"); //TODO: Change
+    this.itemWidth  = this.calculateTotalWidth(this.items[0]);
+    
+    this.total      = this.items.length - 1;
+    this.current    = Math.round(this.total / 2);
+    this.margin     = 0;
+
+    if(this.items.length % 2 == 0) {
+        this.setMargin(this.itemWidth);
+    }
+
+    this.setCenter();
+};
+
+
+
+// Go right
+Carousel.prototype.next = function() {
+    if(this.current + 1 > this.total) {
+        console.log("END");
+        return;
+    }
+
+    this.current++;
+
+    this.changeCurrent(this.items[this.current]);
+    this.setMargin(this.itemWidth * 2);
+
+    this.container.dispatchEvent(new CustomEvent("carousel-move", {
+        detail: {
+            direction: "right"
+        }
+    }));
+};
+
+
+// Go left
+Carousel.prototype.prev = function() {
+    if(this.current - 1 < 0) {
+        console.log("START");
+        return;
+    }
+
+    this.current--;
+
+    this.changeCurrent(this.items[this.current]);
+    this.setMargin(-this.itemWidth * 2);
+
+    this.container.dispatchEvent(new CustomEvent("carousel-move", {
+        detail: {
+            direction: "left"
+        }
+    }));
+}
+
+
+
+Carousel.prototype.setCenter = function() {
+    let center = window.innerWidth / 2;
+
+    this.items.forEach(function(item, index) {
+        let position = item.offsetLeft;
+
+        if(position <= center + 100 && position >= center - 100) {
+            document.querySelector(".current").classList.remove("current");
+            item.classList.add("current");
+            this.current = index;
+        }
+    });
+};
+
+
+
+Carousel.prototype.changeCurrent = function(new_element) {
+    document.querySelector(".current").classList.remove("current");
+    new_element.classList.add("current");
+};
+
+
+
+Carousel.prototype.setMargin = function(margin) {
+    console.log("Setting margin " + margin);
+    this.margin += margin;
+    this.container.style.marginRight = this.margin + "px";
+};
+
+
+
+Carousel.prototype.calculateTotalWidth = function(element) {
+    let styles          = window.getComputedStyle(element, null);
+    let total_width     = 0;
+
+    total_width += parseInt(styles.marginLeft.replace("px", "")) * 2;
+    total_width += parseInt(styles.paddingLeft.replace("px", "")) * 2;
+    total_width += parseInt(styles.borderLeftWidth.replace("px", "")) * 2;
+    total_width += parseInt(styles.width.replace("px", ""));
+
+    return total_width;
+};
+
+
+
+
+try {
+    var carousel = new Carousel("carousel_container");
+} catch(err) {
+    // No element with the required ID was found.
+    // No big deal.
+}
+
+
+
+/**
+ * 
+ *  From this point on jQuery is required
+ *  -   jquery
+ *  -   jquery-touch-events
+ * 
+ */
+
+// Move the events inside an init function or something
+$(document).on("keyup", function(e) { 
+    if($("input").is(":focus")) return;
+
+    let key = e.which;
+    if(key == 39) // Right
+        carousel.next();
+    if(key == 37) // Left
+        carousel.prev();
+});
+
+$("#carousel_container").on("swipe", function(e, swipe) {
+    let direction = swipe.direction;
+    if(direction == "right")
+        carousel.prev();
+    if(direction == "left")
+        carousel.next();
+});
+
+$(".carousel_item").on("click", function() {
+    if($("input").is(":focus")) return;
+    console.log("In here");
+    let position    = $(this).offset();
+    let center      = window.innerWidth / 2;
+    if(position.left < center)
+        carousel.prev();
+    else
+        carousel.next();
+});
+},{}],11:[function(require,module,exports){
 /* ####
 #######
 #######  Small tweaks based on screen size
@@ -13775,10 +13930,10 @@ $(".modal").css({
 ####*/
 
 // For every user that was returned from the database
-$(".form_avatar img").each(function(i) {
-    let hash = $(this).attr("src");
+$(".image_hash").each(function(i) {
+    let hash = $(this).text();
     let data = new Identicon(hash, identicon_options); // Create new image
-    $(this).attr("src", "data:image/svg+xml;base64," + data); // Set it as source
+    $(this).parent().find("img").attr("src", "data:image/svg+xml;base64," + data); // Set it as source
 });
 
 
@@ -13851,166 +14006,29 @@ $("form").on("submit", function(e) {
 
 
 
-/* ####
-#######
-#######  Handling of how the "carousel" of users behaves
-#######
-####*/
-let center = window.innerWidth / 2; // Center of window
-let a_width = $(".current").first().outerWidth(true); // Total width of avatar (+margin, padding, border)
-let margin = 0; // Keep check of how much margin should actually be added
 
 
-// If the amount of users is even, center one of them
-if($(".form_avatar").length % 2 == 0) {
-    margin = a_width;
-    $(".avatar_container").css("margin-right", margin);
-}
-
-// When document is ready, find the icon in the center
-// and give it the .current class so that it stands out
-$(document).ready(function() {
-    $(".form_avatar").each(function(i) {
-
-        let pos = $(this).offset();
-
-        // Weird check for android chrome (check if it's near the center)
-        if(pos.left <= center + 100 && pos.left >= center - 100) {
-            $(".current").removeClass("current");
-            $(this).addClass("current");
-
-            // If it's the new user tile show the username input aswell
-            if($(this).hasClass("create_new")) {
-                $("#form_username").css({
-                    "opacity": "1",
-                    "margin-top": "0"
-                });
-            }
-        }
-    });
-});
-
-
-
-
-
-
-
-/* ####
-#######
-#######  Different events for different ways
-#######  of controlling the carousel
-#######
-####*/
-// Keyboard
-$(document).on("keyup", function(e) { 
-    let key = e.which;
-    carouselHandler(key);
-});
-// Swipes
-$(".avatar_container").on("swipe", function(e, swipe) {
-    let direction = swipe.direction;
+// Add event listener for carousel
+let carousel_container = document.getElementById("carousel_container");
+let carousel_handler = function(e) {
+    // TODO: Probably not the best way to handle this?
+    if(!document.getElementById("login")) 
+        this.removeEventListener("carousel-move", carousel_handler);
     
-    if(direction == "left") {
-        direction = "right";
-    } else {
-        direction = "left";
-    }
+    let has_class = $(".current").hasClass("create_new");
+    if(has_class)
+        $("#form_username").removeClass("hidden");
+    else
+        $("#form_username").addClass("hidden");
+            
+};
 
-    carouselHandler(direction);
-});
-// Clicks
-$(".form_avatar").on("click", function() {
-    let pos = $(this).offset();
-
-    if(pos.left < center) {
-        carouselHandler("left");
-    } else {
-        carouselHandler("right");
-    }
-});
+if(carousel_container)
+    carousel_container.addEventListener("carousel-move", carousel_handler);
 
 
 
-
-
-
-
-/* ####
-#######
-#######  Function definitions
-#######
-####*/
-
-/**
- * Move the carousel in the direction that the event
- * requests. Events may be swipes, clicks, or key presses.
- * Handle the direction, add or subtract the required margin
- * and move the .current class to the avatar in center.
- * 
- * If avatar in center is the new user one, display the username
- * input.
- * 
- * @param {string/number} key The direction in which the carousel should be going 
- */
-function carouselHandler(key) {
-    let container = $(".avatar_container");
-    let current = $(".current");
-
-    switch(key) {
-        case "left":
-        case 37: //Left
-
-            let prev = current.prev();
-
-            // If there's no other elements before this one
-            if(prev.length == 0) {
-                return;
-            }
-
-            margin -= a_width * 2;
-
-            current.removeClass("current");
-            prev.addClass("current");
-            container.css("margin-right", margin);
-            break;
-
-        case "right":
-        case 39: //Right
-
-            let next = current.next();
-
-            // If there's no other elements after this one
-            if(next.length == 0) {
-                return;
-            }
-
-            margin += a_width * 2;
-
-            current.removeClass("current");
-            next.addClass("current");
-            container.css("margin-right", margin);
-            break;
-    }
-
-    // This means the registration form should be visible
-    if($(".current").hasClass("create_new")) {
-        $("#form_username").css({
-            "opacity": "1",
-            "margin-top": "0",
-            "cursor": "text"
-        });
-    } else {
-        // Gotta hide it as best as possible
-        // while still having a smooth animation
-        $("#form_username").css({
-            "opacity": "0",
-            "margin-top": "-60px",
-            "cursor": "default"
-        });
-    }
-}
-
+    
 
 /**
  * Create a new hidden form and submit it with the required
@@ -14037,7 +14055,7 @@ function redirect(url, method, uuid) {
 
     form.submit();
 }
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 /**
  * Handle the navbar click events
  * and data display
@@ -14055,6 +14073,6 @@ try { // Maybe there's a better solution but it'll do for now
     let data = new Identicon(hash, identicon_options); // Create new image
     $(".profile img").attr("src", "data:image/svg+xml;base64," + data); // Set it as source
 } catch (err) {
-    console.log("There was no .profile img");
+    // No element with the given identifiers was found
 }
 },{}]},{},[8]);
