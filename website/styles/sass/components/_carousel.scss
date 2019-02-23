@@ -1,0 +1,13 @@
+.carousel_container {
+    width: auto; 
+    height: auto;
+    @include flex(center, center);
+    transition: all .5s;
+
+    .carousel_item {
+        width: 60px;
+        height: 60px;
+        border-radius: 2px;
+        box-shadow: $boxShadowSoft;
+    }
+}
