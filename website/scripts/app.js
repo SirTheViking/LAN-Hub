@@ -13951,24 +13951,36 @@ $(".hamburger").on("click", function() {
     $(this).toggleClass("is-active");
     $(".sidebar, nav").toggleClass("active");
 });
-
-
-
-try { // Maybe there's a better solution but it'll do for now
-    let hash = $(".profile img").attr("src");
-    let data = new Identicon(hash, identicon_options); // Create new image
-    $(".profile img").attr("src", "data:image/svg+xml;base64," + data); // Set it as source
-} catch (err) {
-    // No element with the given identifiers was found
-}
 },{}],11:[function(require,module,exports){
-window.identicon_options = {
+/*
+    Contains things that might need to run in all files
+*/
+
+
+
+let identicon_options = {
     foreground: [78, 161, 255, 100],
     background: [24, 27, 33, 255], // #181b21
     margin: 0.2,
     size: 420,
     format: "svg"
 };
+
+
+/*
+| -------------------------------------------------------------------------
+|   The 'image_hash' element will always be in a container with an image
+|   so this will work wherever there's an 'image_hash' span
+|
+|   Won't error out if no elements are found
+*/
+$(".image_hash").each(function(i) {
+    let hash = $(this).text();
+    let data = new Identicon(hash, identicon_options);
+
+    $(this).parent().find("img").attr("src", "data:image/svg+xml;base64," + data);
+    $(this).remove();
+});
 },{}],12:[function(require,module,exports){
 /* ####
 #######
@@ -13977,24 +13989,6 @@ window.identicon_options = {
 ####*/
 $(".modal").css({
     "padding-top": window.innerHeight / 5
-});
-
-
-
-/* ####
-#######
-#######  Identicon/Profile avatar generation
-#######  based on the hash
-#######
-####*/
-
-// For every user that was returned from the database
-// TODO: Maybe it can be ran once to check for ".image_hash" everywhere;
-// TODO: and then that's it. put it in _configs or something?
-$(".image_hash").each(function(i) {
-    let hash = $(this).text();
-    let data = new Identicon(hash, identicon_options); // Create new image
-    $(this).parent().find("img").attr("src", "data:image/svg+xml;base64," + data); // Set it as source
 });
 
 

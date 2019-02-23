@@ -15,7 +15,8 @@
 <div class="sidebar">
     <div class="profile">
         <div class="thumb">
-            <img src="<?= $profile_image ?>" alt="Profile Image">
+            <span class="image_hash"><?= $profile_image ?></span>
+            <img src="#" alt="Profile Image">
         </div>
         <div id="name">
             <?= $username ?>

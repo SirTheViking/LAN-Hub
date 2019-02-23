@@ -9,24 +9,6 @@ $(".modal").css({
 
 
 
-/* ####
-#######
-#######  Identicon/Profile avatar generation
-#######  based on the hash
-#######
-####*/
-
-// For every user that was returned from the database
-// TODO: Maybe it can be ran once to check for ".image_hash" everywhere;
-// TODO: and then that's it. put it in _configs or something?
-$(".image_hash").each(function(i) {
-    let hash = $(this).text();
-    let data = new Identicon(hash, identicon_options); // Create new image
-    $(this).parent().find("img").attr("src", "data:image/svg+xml;base64," + data); // Set it as source
-});
-
-
-
 
 
 
