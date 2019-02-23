@@ -1,10 +1,12 @@
 // Used by all files
-@import "components/variables";
-@import "components/reset";
-@import "components/fonts";
+@import "utils/variables";
+
+@import "base/reset";
+@import "base/fonts";
 
 // Page components
-@import "components/login";
-@import "components/home";
-@import "components/navbar";
+@import "pages/login";
+@import "pages/home";
+
+@import "layout/navbar";
 

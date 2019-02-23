@@ -78,9 +78,15 @@ body#login {
   color: rgba(255, 255, 255, 0.507);
 }
 .modal form input#form_username {
+  opacity: 1;
+  margin-top: 0;
+  cursor: text;
+  transition: all 0.2s;
+}
+.modal form input#form_username.hidden {
   opacity: 0;
   margin-top: -60px;
-  transition: all 0.2s;
+  cursor: default;
 }
 .modal form button {
   width: 70%;
@@ -104,7 +110,7 @@ body#login {
   font-size: 26px;
 }
 
-.avatar_container {
+#carousel_container {
   width: auto;
   height: auto;
   display: flex;
@@ -112,12 +118,12 @@ body#login {
   align-items: center;
   transition: all 0.5s;
 }
-.avatar_container .form_avatar {
+#carousel_container .form_avatar {
   width: 200px;
   height: 200px;
   margin: 0 20px 80px 20px;
 }
-.avatar_container .form_avatar .thumb_small {
+#carousel_container .form_avatar .thumb_small {
   position: relative;
   width: 100%;
   height: 100%;
@@ -132,13 +138,16 @@ body#login {
   z-index: 90;
   cursor: default;
 }
-.avatar_container .form_avatar .thumb_small img {
+#carousel_container .form_avatar .thumb_small span {
+  display: none;
+}
+#carousel_container .form_avatar .thumb_small img {
   min-height: 100%;
   height: auto;
   width: 100%;
   z-index: 1;
 }
-.avatar_container .form_avatar .thumb_small .overlay {
+#carousel_container .form_avatar .thumb_small .overlay {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -149,49 +158,49 @@ body#login {
   flex-direction: column;
   z-index: 2;
 }
-.avatar_container .form_avatar .thumb_small .overlay .status {
+#carousel_container .form_avatar .thumb_small .overlay .status {
   font-family: Poppins;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.507);
   transition: all 0.2s;
 }
-.avatar_container .form_avatar .thumb_small .overlay .username {
+#carousel_container .form_avatar .thumb_small .overlay .username {
   font-family: Poppins;
   font-size: 24px;
   color: #d0deeb;
 }
-.avatar_container .create_new {
+#carousel_container .create_new {
   opacity: 0.6;
   transition: all 0.5s;
 }
-.avatar_container .create_new .thumb {
+#carousel_container .create_new .thumb {
   color: rgba(255, 255, 255, 0.507);
   box-shadow: none !important;
 }
-.avatar_container .create_new svg {
+#carousel_container .create_new svg {
   width: 35px;
   height: 35px;
 }
-.avatar_container .create_new svg path {
+#carousel_container .create_new svg path {
   fill: rgba(255, 255, 255, 0.507);
   transition: all 0.5s;
 }
-.avatar_container .current {
+#carousel_container .current {
   width: 200px;
   height: 200px;
   opacity: 1;
 }
-.avatar_container .current .thumb_small {
+#carousel_container .current .thumb_small {
   transform: scale(1.2);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-.avatar_container .current .status {
+#carousel_container .current .status {
   color: rgba(78, 161, 255, 0.623) !important;
 }
-.avatar_container .current .required {
+#carousel_container .current .required {
   border: 1px solid #ff004c !important;
 }
-.avatar_container .current .problem {
+#carousel_container .current .problem {
   color: #ff004c !important;
 }
 

@@ -66,9 +66,16 @@ body#login { // TODO: Change filename to login
 
 
         input#form_username {
-            opacity: 0;
-            margin-top: -60px;
+            opacity: 1;
+            margin-top: 0;
+            cursor: text;
             transition: $transitionSpeed;
+
+            &.hidden {
+                opacity: 0;
+                margin-top: -60px;
+                cursor: default;
+            }
         }
 
 
@@ -106,7 +113,7 @@ body#login { // TODO: Change filename to login
 
 
 
-.avatar_container {
+#carousel_container {
     width: auto; 
     height: auto;
     @include flex(center, center);
@@ -138,6 +145,10 @@ body#login { // TODO: Change filename to login
         
             cursor: default;
 
+
+            span {
+                display: none;
+            }
 
             img {
                 min-height: 100%;
