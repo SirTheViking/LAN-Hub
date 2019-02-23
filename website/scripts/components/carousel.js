@@ -1,27 +1,61 @@
-function Carousel(container_id, animate = false) {
-    // TODO: Check for a second class so you know if you should have automatic slides
-    this.container  = document.getElementById(container_id);
-    
-    this.items      = this.container.querySelectorAll(".form_avatar"); //TODO: Change
-    this.itemWidth  = this.calculateTotalWidth(this.items[0]);
-    
-    this.total      = this.items.length - 1;
-    this.current    = Math.round(this.total / 2);
-    this.margin     = 0;
+function Carousel(container_class) {
+    this.container      = document.querySelector(container_class);
+    this.animate        = this.container.classList.contains("animated_carousel");
+    this.direction      = true; // true == right, false == left
+    this.paused         = false;
 
-    if(this.items.length % 2 == 0) {
+    this.slide_time     = 5000;
+    this.pause_time     = 10000;
+
+    this.items          = this.container.querySelectorAll(".carousel_item");
+    this.itemWidth      = this.calculateTotalWidth(this.items[0]);
+    
+    this.total          = this.items.length - 1;
+    this.current        = Math.round(this.total / 2);
+    this.margin         = 0;
+
+    if(this.items.length % 2 == 0)
         this.setMargin(this.itemWidth);
-    }
 
     this.setCenter();
+
+    if(this.animate)
+        this.slide(this);
 };
+
+
+
+Carousel.prototype.slide = function(object_context) {
+    setInterval(function() {
+        if(object_context.paused)
+            return;
+
+        if(object_context.direction) 
+            object_context.next();
+        else 
+            object_context.prev();
+    }, this.slide_time);
+};
+
+
+
+Carousel.prototype.pause = function() {
+    if(this.paused) return;
+
+    this.paused = true;
+
+    let object_context = this;
+    setTimeout(function() {
+        object_context.paused = false;
+    }, this.pause_time);
+}
 
 
 
 // Go right
 Carousel.prototype.next = function() {
     if(this.current + 1 > this.total) {
-        console.log("END");
+        this.direction = !this.direction;
         return;
     }
 
@@ -41,7 +75,7 @@ Carousel.prototype.next = function() {
 // Go left
 Carousel.prototype.prev = function() {
     if(this.current - 1 < 0) {
-        console.log("START");
+        this.direction = !this.direction;
         return;
     }
 
@@ -59,16 +93,17 @@ Carousel.prototype.prev = function() {
 
 
 
+
 Carousel.prototype.setCenter = function() {
-    let center = window.innerWidth / 2;
+    let center          = window.innerWidth / 2;
+    let object_context  = this;
 
     this.items.forEach(function(item, index) {
         let position = item.offsetLeft;
 
         if(position <= center + 100 && position >= center - 100) {
-            document.querySelector(".current").classList.remove("current");
-            item.classList.add("current");
-            this.current = index;
+            object_context.changeCurrent(item);
+            object_context.current = index;
         }
     });
 };
@@ -83,7 +118,6 @@ Carousel.prototype.changeCurrent = function(new_element) {
 
 
 Carousel.prototype.setMargin = function(margin) {
-    console.log("Setting margin " + margin);
     this.margin += margin;
     this.container.style.marginRight = this.margin + "px";
 };
@@ -106,7 +140,7 @@ Carousel.prototype.calculateTotalWidth = function(element) {
 
 
 try {
-    var carousel = new Carousel("carousel_container");
+    var carousel = new Carousel(".carousel_container");
 } catch(err) {
     // No element with the required ID was found.
     // No big deal.
@@ -121,10 +155,10 @@ try {
  *  -   jquery-touch-events
  * 
  */
-
-// Move the events inside an init function or something
 $(document).on("keyup", function(e) { 
     if($("input").is(":focus")) return;
+
+    carousel.pause();
 
     let key = e.which;
     if(key == 39) // Right
@@ -133,7 +167,9 @@ $(document).on("keyup", function(e) {
         carousel.prev();
 });
 
-$("#carousel_container").on("swipe", function(e, swipe) {
+$(".carousel_container").on("swipe", function(e, swipe) {
+    carousel.pause();
+
     let direction = swipe.direction;
     if(direction == "right")
         carousel.prev();
@@ -143,9 +179,11 @@ $("#carousel_container").on("swipe", function(e, swipe) {
 
 $(".carousel_item").on("click", function() {
     if($("input").is(":focus")) return;
-    console.log("In here");
-    let position    = $(this).offset();
-    let center      = window.innerWidth / 2;
+    
+    carousel.pause();
+
+    let position = $(this).offset();
+    let center = window.innerWidth / 2;
     if(position.left < center)
         carousel.prev();
     else
