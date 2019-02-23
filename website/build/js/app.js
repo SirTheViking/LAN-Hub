@@ -13957,7 +13957,6 @@ $(".hamburger").on("click", function() {
 */
 
 
-
 let identicon_options = {
     foreground: [78, 161, 255, 100],
     background: [24, 27, 33, 255], // #181b21
@@ -14078,8 +14077,11 @@ let carousel_handler = function(e) {
             
 };
 
-if(carousel_container)
+if(carousel_container) {
+    // Initial check if no users exist
+    carousel_handler();
     carousel_container.addEventListener("carousel-move", carousel_handler);
+}
 
 
 
