@@ -21,7 +21,7 @@
 
             <div class="modal login">
 
-                <div id="carousel_container">
+                <div class="carousel_container">
                     <?php 
 
                         foreach($obj as $user) {
