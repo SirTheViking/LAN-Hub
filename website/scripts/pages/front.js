@@ -17,6 +17,8 @@ $(".modal").css({
 ####*/
 
 // For every user that was returned from the database
+// TODO: Maybe it can be ran once to check for ".image_hash" everywhere;
+// TODO: and then that's it. put it in _configs or something?
 $(".image_hash").each(function(i) {
     let hash = $(this).text();
     let data = new Identicon(hash, identicon_options); // Create new image
@@ -96,7 +98,7 @@ $("form").on("submit", function(e) {
 
 
 // Add event listener for carousel
-let carousel_container = document.getElementById("carousel_container");
+let carousel_container = document.querySelector(".carousel_container");
 let carousel_handler = function(e) {
     // TODO: Probably not the best way to handle this?
     if(!document.getElementById("login")) 
@@ -115,7 +117,7 @@ if(carousel_container)
 
 
 
-    
+
 
 /**
  * Create a new hidden form and submit it with the required
