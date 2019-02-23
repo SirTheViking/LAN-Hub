@@ -94,8 +94,11 @@ let carousel_handler = function(e) {
             
 };
 
-if(carousel_container)
+if(carousel_container) {
+    // Initial check if no users exist
+    carousel_handler();
     carousel_container.addEventListener("carousel-move", carousel_handler);
+}
 
 
 
