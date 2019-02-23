@@ -113,14 +113,9 @@ body#login { // TODO: Change filename to login
 
 
 
-#carousel_container {
-    width: auto; 
-    height: auto;
-    @include flex(center, center);
-    transition: all .5s;
+.carousel_container {
 
-
-    .form_avatar {
+    .form_avatar.carousel_item {
         width: 200px;
         height: 200px;
         margin: 0 20px 80px 20px;

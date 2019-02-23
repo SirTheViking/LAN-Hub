@@ -1,12 +1,19 @@
 // Used by all files
 @import "utils/variables";
+@import "utils/mixins";
 
 @import "base/reset";
 @import "base/fonts";
 
-// Page components
+
+// Components
+@import "components/carousel";
+
+
+// Pages
 @import "pages/login";
 @import "pages/home";
+
 
 @import "layout/navbar";
 

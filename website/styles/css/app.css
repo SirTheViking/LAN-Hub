@@ -22,10 +22,27 @@ body, html {
   font-family: Poppins Bold;
   src: url("/resources/fonts/Poppins-Bold.ttf");
 }
+.carousel_container {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  transition: all 0.5s;
+}
+.carousel_container .carousel_item {
+  width: 60px;
+  height: 60px;
+  border-radius: 2px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.05), 0 10px 10px rgba(0, 0, 0, 0.05);
+}
+
 body#login {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: row;
   flex-direction: column;
   background-color: #fff;
   overflow: hidden;
@@ -53,8 +70,9 @@ body#login {
   background-color: rgba(24, 27, 33, 0.85);
   z-index: 60;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
   flex-direction: column;
   padding-top: 20%;
 }
@@ -62,8 +80,9 @@ body#login {
   width: 400px;
   height: auto;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: row;
   flex-direction: column;
 }
 .modal form input {
@@ -110,20 +129,12 @@ body#login {
   font-size: 26px;
 }
 
-#carousel_container {
-  width: auto;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.5s;
-}
-#carousel_container .form_avatar {
+.carousel_container .form_avatar.carousel_item {
   width: 200px;
   height: 200px;
   margin: 0 20px 80px 20px;
 }
-#carousel_container .form_avatar .thumb_small {
+.carousel_container .form_avatar.carousel_item .thumb_small {
   position: relative;
   width: 100%;
   height: 100%;
@@ -131,76 +142,78 @@ body#login {
   border-radius: 4px;
   margin: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: row;
   transition: all 0.2s;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   z-index: 90;
   cursor: default;
 }
-#carousel_container .form_avatar .thumb_small span {
+.carousel_container .form_avatar.carousel_item .thumb_small span {
   display: none;
 }
-#carousel_container .form_avatar .thumb_small img {
+.carousel_container .form_avatar.carousel_item .thumb_small img {
   min-height: 100%;
   height: auto;
   width: 100%;
   z-index: 1;
 }
-#carousel_container .form_avatar .thumb_small .overlay {
+.carousel_container .form_avatar.carousel_item .thumb_small .overlay {
   position: absolute;
   width: 100%;
   height: 100%;
   background-color: rgba(24, 27, 33, 0.8);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: row;
   flex-direction: column;
   z-index: 2;
 }
-#carousel_container .form_avatar .thumb_small .overlay .status {
+.carousel_container .form_avatar.carousel_item .thumb_small .overlay .status {
   font-family: Poppins;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.507);
   transition: all 0.2s;
 }
-#carousel_container .form_avatar .thumb_small .overlay .username {
+.carousel_container .form_avatar.carousel_item .thumb_small .overlay .username {
   font-family: Poppins;
   font-size: 24px;
   color: #d0deeb;
 }
-#carousel_container .create_new {
+.carousel_container .create_new {
   opacity: 0.6;
   transition: all 0.5s;
 }
-#carousel_container .create_new .thumb {
+.carousel_container .create_new .thumb {
   color: rgba(255, 255, 255, 0.507);
   box-shadow: none !important;
 }
-#carousel_container .create_new svg {
+.carousel_container .create_new svg {
   width: 35px;
   height: 35px;
 }
-#carousel_container .create_new svg path {
+.carousel_container .create_new svg path {
   fill: rgba(255, 255, 255, 0.507);
   transition: all 0.5s;
 }
-#carousel_container .current {
+.carousel_container .current {
   width: 200px;
   height: 200px;
   opacity: 1;
 }
-#carousel_container .current .thumb_small {
+.carousel_container .current .thumb_small {
   transform: scale(1.2);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-#carousel_container .current .status {
+.carousel_container .current .status {
   color: rgba(78, 161, 255, 0.623) !important;
 }
-#carousel_container .current .required {
+.carousel_container .current .required {
   border: 1px solid #ff004c !important;
 }
-#carousel_container .current .problem {
+.carousel_container .current .problem {
   color: #ff004c !important;
 }
 
@@ -291,8 +304,9 @@ nav.active {
   width: 100%;
   height: 300px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: row;
   flex-direction: column;
   border-bottom: 1px solid rgba(24, 27, 33, 0.1);
 }
@@ -303,8 +317,9 @@ nav.active {
   border-radius: 4px;
   margin: 0 0 30px 0;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: row;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 .sidebar .profile .thumb img {
@@ -321,16 +336,18 @@ nav.active {
   width: 100%;
   height: 400px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: row;
   flex-direction: column;
 }
 .sidebar .links a {
   width: 100%;
   height: 60px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: row;
   text-decoration: none;
   font-family: Poppins;
   color: #181b21;

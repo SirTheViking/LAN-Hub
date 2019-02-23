@@ -22,10 +22,3 @@ $borderRadiusBig: 40px;
 
 $boxShadowBig: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 $boxShadowSoft: 0 14px 28px rgba(0,0,0,0.05), 0 10px 10px rgba(0,0,0,0.05);
-
-
-@mixin flex($align, $justify) {
-    display: flex;
-    justify-content: $justify;
-    align-items: $align;
-}
