@@ -12,7 +12,7 @@
         
         <title>Welcome</title>
 
-        <link type="text/css" rel="stylesheet" href="/styles/css/app.css">
+        <link type="text/css" rel="stylesheet" href="/build/css/app.css">
     </head>
     <body id="login">
 
@@ -67,6 +67,6 @@
                 </form>
             </div>
 
-            <script type="text/javascript" src="/scripts/app.js"></script>
+            <script type="text/javascript" src="/build/js/app.js"></script>
     </body>
 </html>
