@@ -21,14 +21,15 @@
 
             <div class="modal login">
 
-                <div class="avatar_container">
+                <div id="carousel_container">
                     <?php 
 
                         foreach($obj as $user) {
                             echo '
-                                <div id="' . $user->uuid . '" class="form_avatar user">
+                                <div id="' . $user->uuid . '" class="carousel_item form_avatar user">
                                     <div class="thumb_small">
-                                        <img src="' . $user->profile_image . '">
+                                        <span class="image_hash">' . $user->profile_image . '</span>
+                                        <img src="#">
                                         
                                         <div class="overlay">
                                             <div class="username">
@@ -45,7 +46,7 @@
 
                     ?>
 
-                    <div class="form_avatar create_new current">
+                    <div class="carousel_item form_avatar create_new current">
                         <div class="thumb_small">
                             <div class="overlay">
                                 <div class="username">
@@ -60,7 +61,7 @@
                 </div>
 
                 <form method="post" action="#">
-                    <input id="form_username" type="text" placeholder="Username" autocomplete="off">
+                    <input class="hidden" id="form_username" type="text" placeholder="Username" autocomplete="off">
                     <input id="form_password" type="password" placeholder="Password" autocomplete="off">
                     <button type="submit">Enter</button>
                 </form>
