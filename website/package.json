@@ -4,7 +4,7 @@
   "description": "Local network movie library",
   "main": "app.js",
   "scripts": {
-    "watch-changes": "concurrently \"npm:watch-js\" \"npm:watch-sass\"",
+    "dev": "concurrently \"npm:watch-js\" \"npm:watch-sass\"",
     "watch-js": "echo [i] Watching JS files for changes && watchify scripts/bootstrap.js -o scripts/app.js",
     "watch-sass": "sass --watch styles/sass:styles/css"
   },
