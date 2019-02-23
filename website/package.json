@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "dev": "concurrently \"npm:watch-js\" \"npm:watch-sass\"",
-    "watch-js": "echo [i] Watching JS files for changes && watchify scripts/bootstrap.js -o scripts/app.js",
-    "watch-sass": "sass --watch styles/sass:styles/css"
+    "watch-js": "watchify scripts/bootstrap.js -o build/js/app.js",
+    "watch-sass": "sass --watch styles/sass:/build/css"
   },
   "author": "SirTheViking",
   "license": "ISC",
