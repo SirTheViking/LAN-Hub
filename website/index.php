@@ -12,7 +12,7 @@
         
         <title>Welcome</title>
 
-        <link rel="stylesheet" type="text/css" href="/build/app.css">
+        <link rel="stylesheet" type="text/css" href="/app.css">
     </head>
     <body id="login">
 
@@ -67,6 +67,7 @@
                 </form>
             </div>
 
-            <script type="text/javascript" src="/build/bundle.js"></script>
+            <script type="text/javascript" src="/bundle.js"></script>
+
     </body>
 </html>
