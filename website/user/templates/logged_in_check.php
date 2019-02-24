@@ -8,7 +8,7 @@ if(empty($_POST["uuid"])) {
     exit(0); // Redirect here
 }
 
-
+// TODO: If ID is only number it will break for some reason
 $uuid = htmlspecialchars($_POST["uuid"]);
 
 if($_SESSION[$uuid]["status"] != true) {
