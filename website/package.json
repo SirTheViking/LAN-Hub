@@ -4,9 +4,8 @@
   "description": "Local network movie library",
   "main": "app.js",
   "scripts": {
-    "dev": "concurrently \"npm:watch-js\" \"npm:watch-sass\"",
-    "watch-js": "watchify scripts/bootstrap.js -o build/js/app.js",
-    "watch-sass": "sass --watch styles/sass:/build/css"
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
   },
   "author": "SirTheViking",
   "license": "ISC",
@@ -16,8 +15,27 @@
     "jquery-touch-events": "git+https://github.com/benmajor/jQuery-Touch-Events.git"
   },
   "devDependencies": {
-    "concurrently": "^4.1.0",
-    "sass": "^1.17.1",
-    "watchify": "^3.11.1"
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "autoprefixer": "^9.4.8",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/env",
+        {
+          "modules": false
+        }
+      ]
+    ]
   }
 }
