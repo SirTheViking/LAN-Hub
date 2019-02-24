@@ -1,6 +1,6 @@
 <?php 
 
-    require ("templates/logged_in_check.php");
+   require ("templates/logged_in_check.php");
 
 ?>
 
@@ -13,7 +13,7 @@
         
         <title>Home</title>
 
-        <link type="text/css" rel="stylesheet" href="/build/css/app.css">
+        <link type="text/css" rel="stylesheet" href="/build/app.css">
     </head>
     <body id="home">
 
@@ -23,6 +23,6 @@
             
         </div>
 
-        <script type="text/javascript" src="/build/js/app.js"></script>
+        <script type="text/javascript" src="/build/bundle.js"></script>
     </body>
 </html>

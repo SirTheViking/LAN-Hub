@@ -16,3 +16,9 @@ require("./pages/front");
 
 
 
+// TODO: Move it to it's own file maybe?
+// Import the css for everything
+import "../styles/sass/app.scss";
+
+
+
