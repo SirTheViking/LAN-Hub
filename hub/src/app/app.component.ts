@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
 
 
 export class AppComponent {
-  title = 'hub';
+  title = 'This will be replaced with whatever pages we make';
 }

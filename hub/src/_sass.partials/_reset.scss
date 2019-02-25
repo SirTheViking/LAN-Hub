@@ -6,4 +6,9 @@ body, html {
     padding: 0;
     
     background-color: $bodyBg;
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
 }
