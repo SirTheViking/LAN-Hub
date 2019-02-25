@@ -47,7 +47,7 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/_sass.config/"
+                "src/_sass.partials/"
               ]
             },
             "styles": [
