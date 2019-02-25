@@ -45,6 +45,11 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/_sass.config/"
+              ]
+            },
             "styles": [
               "src/styles.scss"
             ],
