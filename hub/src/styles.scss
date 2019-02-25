@@ -1,5 +1,4 @@
-@import "variables";
-@import "mixins";
+@import "imports";
 
 
 html {
@@ -15,4 +14,6 @@ body {
 
     background-color: $bodyBg;
     @include flex(center, center);
+
+    font-family: Poppins;
 }
