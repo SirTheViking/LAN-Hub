@@ -1,0 +1,8 @@
+@import "imports";
+
+section {
+    @include flex(center, center, column);
+
+    width: 100%;
+    height: 100%;
+}
