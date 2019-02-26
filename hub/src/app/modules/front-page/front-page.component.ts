@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { FrontFormComponent } from "@components/front-form/front-form.component";
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-front-page',
@@ -10,9 +9,10 @@ import { FrontFormComponent } from "@components/front-form/front-form.component"
 
 export class FrontPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService: Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle("Welcome, please Login");
   }
 
 }

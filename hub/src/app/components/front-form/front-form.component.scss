@@ -1,0 +1,5 @@
+@import "imports";
+
+form {
+    @include flex(center, center, column);
+}
