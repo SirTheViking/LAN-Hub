@@ -1,5 +1,48 @@
 @import "imports";
 
 form {
+    width: 400px;
+    height: auto;
+
     @include flex(center, center, column);
+
+    // TODO: First input should be hidden unless creating user
+    input {
+        width: 70%;
+        height: 50px;
+
+        padding: 0px 10px;
+        margin-bottom: 20px;
+
+        background: none;
+        border: none;
+        border-bottom: 1px solid $subtitleColor;
+
+        font-family: Poppins;
+        color: $subtitleColor;
+    }
+    
+    button {
+        width: 70%;
+        height: 70px;
+
+        margin: 40px 0 50px 0;
+
+        background: none;
+        border: none;
+        border: 2px solid $borderColor;
+        border-radius: $borderRadiusBig;
+
+        font-family: Poppins;
+        color: $borderColor;
+        font-size: 18px;
+
+        transition: $transitionSpeed;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $borderColor;
+            color: $titleColor;
+        }
+    }
 }

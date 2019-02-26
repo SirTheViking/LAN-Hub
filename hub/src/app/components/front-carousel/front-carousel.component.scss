@@ -1,0 +1,12 @@
+@import "imports";
+
+.carousel_container {
+    width: auto;
+    height: auto;
+
+    @include flex(center, center);
+
+    transition: $transitionSpeed;
+
+    background-color: red;
+}

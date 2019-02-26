@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FrontPageComponent } from './modules/front-page/front-page.component';
 import { FrontFormComponent } from './components/front-form/front-form.component';
+import { FrontCarouselComponent } from './components/front-carousel/front-carousel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FrontPageComponent,
-    FrontFormComponent
+    FrontFormComponent,
+    FrontCarouselComponent
   ],
   imports: [
     BrowserModule,
