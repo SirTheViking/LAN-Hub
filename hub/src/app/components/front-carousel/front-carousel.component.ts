@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FrontService } from 'src/app/services/front.service';
 
 @Component({
   selector: 'app-front-carousel',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrontCarouselComponent implements OnInit {
 
-  constructor() { }
+  constructor(private frontService: FrontService) { }
 
   ngOnInit() {
+    console.log("testing: " + this.frontService.getTest());
+    console.log("Setting test: " + this.frontService.setTest("Magic"));
+    console.log("testing: " + this.frontService.getTest());
+  }
+
+  setService(): void {
+    console.log("Setting test");
+    this.frontService.setTest(Math.random().toString());
   }
 
 }
