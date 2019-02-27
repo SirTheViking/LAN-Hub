@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class CarouselService {
 
-  test: string;
+  private margin: number = 0;
 
   constructor() { }
 
-  setTest(to: string): void {
-    this.test = to;
+  updateMargin(px: number): void {
+    this.margin += px;
   }
+
 }

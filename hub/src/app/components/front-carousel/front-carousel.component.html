@@ -1,4 +1,6 @@
-<div class="carousel_container" (click)="setService()">
+<div class="carousel_container" 
+    [style.marginRight.px]="carouselService.margin"
+    (click)="setService()">
   <!--
     Should render all user avatars,
     and pass required data to them when
@@ -7,5 +9,5 @@
     Or just pass it here to elements built
     here
   -->
-  {{ carouselService.test }}
+  Margin is {{ carouselService.margin }}
 </div>

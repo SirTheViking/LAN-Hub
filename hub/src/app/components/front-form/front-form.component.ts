@@ -14,8 +14,7 @@ export class FrontFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  setService(): void {
-    this.carouselService.setTest(Math.random().toString());
+  updateMargin(px: number): void {
+    this.carouselService.updateMargin(50);
   }
-
 }
