@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { FrontService } from 'src/app/services/front.service';
+import { CarouselService } from 'src/app/services/carousel.service';
 
 @Component({
   selector: 'app-front-form',
   templateUrl: './front-form.component.html',
   styleUrls: ['./front-form.component.scss']
 })
+
 export class FrontFormComponent implements OnInit {
 
-  constructor(private frontService: FrontService) { }
+  constructor(private carouselService: CarouselService) { }
 
   ngOnInit() {
   }
 
-  getService(): void {
-    console.log(this.frontService.getTest());
+  setService(): void {
+    this.carouselService.setTest(Math.random().toString());
   }
 
 }
