@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "identicon.js": "^2.3.3",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "jquery-touch-events": "git+https://github.com/benmajor/jQuery-Touch-Events.git"
   },
   "devDependencies": {
